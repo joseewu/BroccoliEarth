@@ -4,6 +4,7 @@ def main_sources
 #define your pod resources
 pod 'Alamofire'
 pod 'ARCL'
+pod "Floaty", "~> 4.1.0"
 
 end
 def test_sources

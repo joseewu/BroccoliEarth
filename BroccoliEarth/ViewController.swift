@@ -11,13 +11,19 @@ import SceneKit
 import ARKit
 import ARCL
 import CoreLocation
+import Floaty
 
 class ViewController: UIViewController, ARSCNViewDelegate {
 
     @IBOutlet var sceneView: ARSCNView!
+
+    var floatButton:Floaty = Floaty(size: 60)
     var sceneLocationView = SceneLocationView()
     var currentLocation:CLLocationCoordinate2D?
-    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        navigationController?.navigationBar.isHidden = true
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         let locManager = CLLocationManager()
@@ -25,7 +31,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         // Set the view's delegate
         sceneView.delegate = self
         // Show statistics such as fps and timing information
-        sceneView.showsStatistics = true
+        sceneView.showsStatistics = false
         // Create a new scene
         sceneLocationView.locationDelegate = self
         let scene = SCNScene(named: "art.scnassets/rose.scn")!
@@ -34,13 +40,23 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         sceneView.scene = scene
         sceneLocationView.run()
         view.addSubview(sceneLocationView)
+        renderUi()
+    }
+    private func renderUi() {
+        floatButton.addItem(icon: UIImage(named: "photoPicker")!) { [weak self] (item) in
+            self?.showReportPage()
+        }
+        view.addSubview(floatButton)
+    }
+    private func showReportPage() {
+        self.performSegue(withIdentifier: "showReportPage", sender: self)
     }
     internal func addNode(at location:CLLocationCoordinate2D) {
         if currentLocation != nil {
             return
         }
         currentLocation = location
-        let coordinate = CLLocationCoordinate2D(latitude: location.latitude + 0.000001, longitude: location.longitude + 0.00001)
+        let coordinate = CLLocationCoordinate2D(latitude: location.latitude + 0.02, longitude: location.longitude + 0.00001)
         let location = CLLocation(coordinate: coordinate, altitude: 300)
         let image = UIImage(named: "pin")!
         
@@ -94,11 +110,6 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
     }
 }
-//extension ViewController:CLLocationManagerDelegate {
-//    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-//        let currentLocation:CLLocation? = locations.first
-//    }
-//}
 extension ViewController:SceneLocationViewDelegate {
     func sceneLocationViewDidAddSceneLocationEstimate(sceneLocationView: SceneLocationView, position: SCNVector3, location: CLLocation) {
         if let current = sceneLocationView.currentLocation()?.coordinate {

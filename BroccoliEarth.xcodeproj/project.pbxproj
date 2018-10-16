@@ -18,6 +18,9 @@
 		EB11A3C221708CDE00AF6C0C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB11A3C021708CDE00AF6C0C /* LaunchScreen.storyboard */; };
 		EB11A3CD21708CDE00AF6C0C /* BroccoliEarthTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB11A3CC21708CDE00AF6C0C /* BroccoliEarthTests.swift */; };
 		EB11A3D821708CDE00AF6C0C /* BroccoliEarthUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB11A3D721708CDE00AF6C0C /* BroccoliEarthUITests.swift */; };
+		EBDCDAE9217591BF00963A2B /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDCDAE8217591BF00963A2B /* MainViewModel.swift */; };
+		EBDCDAEB217592BC00963A2B /* MainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDCDAEA217592BC00963A2B /* MainService.swift */; };
+		EBDCDAED217597D700963A2B /* ReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDCDAEC217597D700963A2B /* ReportViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +63,9 @@
 		EB11A3D321708CDE00AF6C0C /* BroccoliEarthUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BroccoliEarthUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB11A3D721708CDE00AF6C0C /* BroccoliEarthUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BroccoliEarthUITests.swift; sourceTree = "<group>"; };
 		EB11A3D921708CDE00AF6C0C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EBDCDAE8217591BF00963A2B /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		EBDCDAEA217592BC00963A2B /* MainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainService.swift; sourceTree = "<group>"; };
+		EBDCDAEC217597D700963A2B /* ReportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportViewController.swift; sourceTree = "<group>"; };
 		F6CF5E0C9E1C673FA4286D68 /* Pods_BroccoliEarthUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BroccoliEarthUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -142,6 +148,9 @@
 				EB11A3B521708CDC00AF6C0C /* AppDelegate.swift */,
 				EB11A3B721708CDC00AF6C0C /* art.scnassets */,
 				EB11A3B921708CDC00AF6C0C /* ViewController.swift */,
+				EBDCDAEC217597D700963A2B /* ReportViewController.swift */,
+				EBDCDAE8217591BF00963A2B /* MainViewModel.swift */,
+				EBDCDAEA217592BC00963A2B /* MainService.swift */,
 				EB11A3BB21708CDC00AF6C0C /* Main.storyboard */,
 				EB11A3BE21708CDE00AF6C0C /* Assets.xcassets */,
 				EB11A3C021708CDE00AF6C0C /* LaunchScreen.storyboard */,
@@ -401,6 +410,9 @@
 			files = (
 				EB11A3BA21708CDC00AF6C0C /* ViewController.swift in Sources */,
 				EB11A3B621708CDC00AF6C0C /* AppDelegate.swift in Sources */,
+				EBDCDAEB217592BC00963A2B /* MainService.swift in Sources */,
+				EBDCDAED217597D700963A2B /* ReportViewController.swift in Sources */,
+				EBDCDAE9217591BF00963A2B /* MainViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

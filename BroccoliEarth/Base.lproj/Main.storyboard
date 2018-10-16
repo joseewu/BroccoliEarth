@@ -57,10 +57,10 @@
             </objects>
             <point key="canvasLocation" x="-55.200000000000003" y="132.68365817091455"/>
         </scene>
-        <!--View Controller-->
+        <!--Report View Controller-->
         <scene sceneID="zi2-3k-jcT">
             <objects>
-                <viewController id="s0j-oc-hUR" sceneMemberID="viewController">
+                <viewController id="s0j-oc-hUR" customClass="ReportViewController" customModule="BroccoliEarth" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="q6e-Tq-qSm">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

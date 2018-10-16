@@ -5,6 +5,8 @@ def main_sources
 pod 'Alamofire'
 pod 'ARCL'
 pod "Floaty", "~> 4.1.0"
+pod 'FBSDKLoginKit'
+pod 'SDWebImage', '~> 4.0'
 
 end
 def test_sources

@@ -46,10 +46,19 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         floatButton.addItem(icon: UIImage(named: "photoPicker")!) { [weak self] (item) in
             self?.showReportPage()
         }
+        floatButton.addItem(icon: UIImage(named: "photoPicker")!) { [weak self] (item) in
+            self?.showLoginPage()
+        }
         view.addSubview(floatButton)
     }
     private func showReportPage() {
-        self.performSegue(withIdentifier: "showReportPage", sender: self)
+        //self.performSegue(withIdentifier: "showReportPage", sender: self)
+        let vc:MBPhotoViewController = MBPhotoViewController()
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    private func showLoginPage() {
+        let vc:MBLoginViewController = MBLoginViewController()
+        navigationController?.pushViewController(vc, animated: true)
     }
     internal func addNode(at location:CLLocationCoordinate2D) {
         if currentLocation != nil {

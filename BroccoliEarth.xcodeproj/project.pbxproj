@@ -18,9 +18,14 @@
 		EB11A3C221708CDE00AF6C0C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB11A3C021708CDE00AF6C0C /* LaunchScreen.storyboard */; };
 		EB11A3CD21708CDE00AF6C0C /* BroccoliEarthTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB11A3CC21708CDE00AF6C0C /* BroccoliEarthTests.swift */; };
 		EB11A3D821708CDE00AF6C0C /* BroccoliEarthUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB11A3D721708CDE00AF6C0C /* BroccoliEarthUITests.swift */; };
+		EB7D801421762B3B00208461 /* MBLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB7D801221762B3B00208461 /* MBLoginViewController.swift */; };
+		EB7D801521762B3B00208461 /* MBLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB7D801321762B3B00208461 /* MBLoginViewController.xib */; };
 		EBDCDAE9217591BF00963A2B /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDCDAE8217591BF00963A2B /* MainViewModel.swift */; };
 		EBDCDAEB217592BC00963A2B /* MainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDCDAEA217592BC00963A2B /* MainService.swift */; };
 		EBDCDAED217597D700963A2B /* ReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDCDAEC217597D700963A2B /* ReportViewController.swift */; };
+		EBDCDAEF2175C0CB00963A2B /* MBLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDCDAEE2175C0CB00963A2B /* MBLocation.swift */; };
+		EBDCDAF22175CD6100963A2B /* MBPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDCDAF02175CD6100963A2B /* MBPhotoViewController.swift */; };
+		EBDCDAF32175CD6100963A2B /* MBPhotoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EBDCDAF12175CD6100963A2B /* MBPhotoViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,9 +68,14 @@
 		EB11A3D321708CDE00AF6C0C /* BroccoliEarthUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BroccoliEarthUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB11A3D721708CDE00AF6C0C /* BroccoliEarthUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BroccoliEarthUITests.swift; sourceTree = "<group>"; };
 		EB11A3D921708CDE00AF6C0C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EB7D801221762B3B00208461 /* MBLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MBLoginViewController.swift; sourceTree = "<group>"; };
+		EB7D801321762B3B00208461 /* MBLoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MBLoginViewController.xib; sourceTree = "<group>"; };
 		EBDCDAE8217591BF00963A2B /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		EBDCDAEA217592BC00963A2B /* MainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainService.swift; sourceTree = "<group>"; };
 		EBDCDAEC217597D700963A2B /* ReportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportViewController.swift; sourceTree = "<group>"; };
+		EBDCDAEE2175C0CB00963A2B /* MBLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MBLocation.swift; sourceTree = "<group>"; };
+		EBDCDAF02175CD6100963A2B /* MBPhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MBPhotoViewController.swift; sourceTree = "<group>"; };
+		EBDCDAF12175CD6100963A2B /* MBPhotoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MBPhotoViewController.xib; sourceTree = "<group>"; };
 		F6CF5E0C9E1C673FA4286D68 /* Pods_BroccoliEarthUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BroccoliEarthUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -146,12 +156,16 @@
 			isa = PBXGroup;
 			children = (
 				EB11A3B521708CDC00AF6C0C /* AppDelegate.swift */,
-				EB11A3B721708CDC00AF6C0C /* art.scnassets */,
+				EB7D801621762B4000208461 /* Login */,
 				EB11A3B921708CDC00AF6C0C /* ViewController.swift */,
 				EBDCDAEC217597D700963A2B /* ReportViewController.swift */,
 				EBDCDAE8217591BF00963A2B /* MainViewModel.swift */,
-				EBDCDAEA217592BC00963A2B /* MainService.swift */,
+				EBDCDAF52175CD7600963A2B /* Service */,
+				EBDCDAF42175CD6C00963A2B /* Model */,
+				EBDCDAF02175CD6100963A2B /* MBPhotoViewController.swift */,
+				EBDCDAF12175CD6100963A2B /* MBPhotoViewController.xib */,
 				EB11A3BB21708CDC00AF6C0C /* Main.storyboard */,
+				EB11A3B721708CDC00AF6C0C /* art.scnassets */,
 				EB11A3BE21708CDE00AF6C0C /* Assets.xcassets */,
 				EB11A3C021708CDE00AF6C0C /* LaunchScreen.storyboard */,
 				EB11A3C321708CDE00AF6C0C /* Info.plist */,
@@ -175,6 +189,31 @@
 				EB11A3D921708CDE00AF6C0C /* Info.plist */,
 			);
 			path = BroccoliEarthUITests;
+			sourceTree = "<group>";
+		};
+		EB7D801621762B4000208461 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				EB7D801221762B3B00208461 /* MBLoginViewController.swift */,
+				EB7D801321762B3B00208461 /* MBLoginViewController.xib */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		EBDCDAF42175CD6C00963A2B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				EBDCDAEE2175C0CB00963A2B /* MBLocation.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		EBDCDAF52175CD7600963A2B /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				EBDCDAEA217592BC00963A2B /* MainService.swift */,
+			);
+			path = Service;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -288,6 +327,8 @@
 				EB11A3B821708CDC00AF6C0C /* art.scnassets in Resources */,
 				EB11A3C221708CDE00AF6C0C /* LaunchScreen.storyboard in Resources */,
 				EB11A3BF21708CDE00AF6C0C /* Assets.xcassets in Resources */,
+				EB7D801521762B3B00208461 /* MBLoginViewController.xib in Resources */,
+				EBDCDAF32175CD6100963A2B /* MBPhotoViewController.xib in Resources */,
 				EB11A3BD21708CDC00AF6C0C /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -386,7 +427,11 @@
 				"${PODS_ROOT}/Target Support Files/Pods-BroccoliEarth/Pods-BroccoliEarth-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/ARCL/ARCL.framework",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
 				"${BUILT_PRODUCTS_DIR}/Floaty/Floaty.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
@@ -394,7 +439,11 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ARCL.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Floaty.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -409,10 +458,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				EB11A3BA21708CDC00AF6C0C /* ViewController.swift in Sources */,
+				EBDCDAF22175CD6100963A2B /* MBPhotoViewController.swift in Sources */,
 				EB11A3B621708CDC00AF6C0C /* AppDelegate.swift in Sources */,
 				EBDCDAEB217592BC00963A2B /* MainService.swift in Sources */,
 				EBDCDAED217597D700963A2B /* ReportViewController.swift in Sources */,
+				EB7D801421762B3B00208461 /* MBLoginViewController.swift in Sources */,
 				EBDCDAE9217591BF00963A2B /* MainViewModel.swift in Sources */,
+				EBDCDAEF2175C0CB00963A2B /* MBLocation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -591,6 +643,7 @@
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 53PCKL938K;
 				INFOPLIST_FILE = BroccoliEarth/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -612,6 +665,7 @@
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 53PCKL938K;
 				INFOPLIST_FILE = BroccoliEarth/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

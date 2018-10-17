@@ -14,4 +14,6 @@ struct MBLocation:Codable {
     let latitude:Double?
     let longitude:Double?
     let isOverRated:Bool?
+    let reportNumber:Double?
 }
+

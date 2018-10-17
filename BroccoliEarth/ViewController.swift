@@ -34,8 +34,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         sceneView.showsStatistics = false
         // Create a new scene
         sceneLocationView.locationDelegate = self
-        let scene = SCNScene(named: "art.scnassets/rose.scn")!
-        
+        let scene = SCNScene(named: "art.scnassets/Mosquito_Color.dae")!
         // Set the scene to the view
         sceneView.scene = scene
         sceneLocationView.run()
@@ -43,6 +42,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         renderUi()
     }
     private func renderUi() {
+        floatButton.buttonColor = UIColor(red: 5/255, green: 16/255, blue: 25/255, alpha: 1)
         floatButton.addItem(icon: UIImage(named: "photoPicker")!) { [weak self] (item) in
             self?.showReportPage()
         }

@@ -18,6 +18,8 @@
 		EB11A3C221708CDE00AF6C0C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB11A3C021708CDE00AF6C0C /* LaunchScreen.storyboard */; };
 		EB11A3CD21708CDE00AF6C0C /* BroccoliEarthTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB11A3CC21708CDE00AF6C0C /* BroccoliEarthTests.swift */; };
 		EB11A3D821708CDE00AF6C0C /* BroccoliEarthUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB11A3D721708CDE00AF6C0C /* BroccoliEarthUITests.swift */; };
+		EB4766562177977F001FD03A /* MBPersonalPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB4766542177977F001FD03A /* MBPersonalPage.swift */; };
+		EB4766572177977F001FD03A /* MBPersonalPage.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB4766552177977F001FD03A /* MBPersonalPage.xib */; };
 		EB7D801421762B3B00208461 /* MBLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB7D801221762B3B00208461 /* MBLoginViewController.swift */; };
 		EB7D801521762B3B00208461 /* MBLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB7D801321762B3B00208461 /* MBLoginViewController.xib */; };
 		EBDCDAE9217591BF00963A2B /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDCDAE8217591BF00963A2B /* MainViewModel.swift */; };
@@ -68,6 +70,8 @@
 		EB11A3D321708CDE00AF6C0C /* BroccoliEarthUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BroccoliEarthUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB11A3D721708CDE00AF6C0C /* BroccoliEarthUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BroccoliEarthUITests.swift; sourceTree = "<group>"; };
 		EB11A3D921708CDE00AF6C0C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EB4766542177977F001FD03A /* MBPersonalPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MBPersonalPage.swift; sourceTree = "<group>"; };
+		EB4766552177977F001FD03A /* MBPersonalPage.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MBPersonalPage.xib; sourceTree = "<group>"; };
 		EB7D801221762B3B00208461 /* MBLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MBLoginViewController.swift; sourceTree = "<group>"; };
 		EB7D801321762B3B00208461 /* MBLoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MBLoginViewController.xib; sourceTree = "<group>"; };
 		EBDCDAE8217591BF00963A2B /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
@@ -159,11 +163,12 @@
 				EB7D801621762B4000208461 /* Login */,
 				EB11A3B921708CDC00AF6C0C /* ViewController.swift */,
 				EBDCDAEC217597D700963A2B /* ReportViewController.swift */,
+				EB4766542177977F001FD03A /* MBPersonalPage.swift */,
+				EB4766552177977F001FD03A /* MBPersonalPage.xib */,
 				EBDCDAE8217591BF00963A2B /* MainViewModel.swift */,
 				EBDCDAF52175CD7600963A2B /* Service */,
 				EBDCDAF42175CD6C00963A2B /* Model */,
-				EBDCDAF02175CD6100963A2B /* MBPhotoViewController.swift */,
-				EBDCDAF12175CD6100963A2B /* MBPhotoViewController.xib */,
+				EB47665321779757001FD03A /* SnapPage */,
 				EB11A3BB21708CDC00AF6C0C /* Main.storyboard */,
 				EB11A3B721708CDC00AF6C0C /* art.scnassets */,
 				EB11A3BE21708CDE00AF6C0C /* Assets.xcassets */,
@@ -189,6 +194,15 @@
 				EB11A3D921708CDE00AF6C0C /* Info.plist */,
 			);
 			path = BroccoliEarthUITests;
+			sourceTree = "<group>";
+		};
+		EB47665321779757001FD03A /* SnapPage */ = {
+			isa = PBXGroup;
+			children = (
+				EBDCDAF02175CD6100963A2B /* MBPhotoViewController.swift */,
+				EBDCDAF12175CD6100963A2B /* MBPhotoViewController.xib */,
+			);
+			path = SnapPage;
 			sourceTree = "<group>";
 		};
 		EB7D801621762B4000208461 /* Login */ = {
@@ -325,6 +339,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EB11A3B821708CDC00AF6C0C /* art.scnassets in Resources */,
+				EB4766572177977F001FD03A /* MBPersonalPage.xib in Resources */,
 				EB11A3C221708CDE00AF6C0C /* LaunchScreen.storyboard in Resources */,
 				EB11A3BF21708CDE00AF6C0C /* Assets.xcassets in Resources */,
 				EB7D801521762B3B00208461 /* MBLoginViewController.xib in Resources */,
@@ -464,6 +479,7 @@
 				EBDCDAED217597D700963A2B /* ReportViewController.swift in Sources */,
 				EB7D801421762B3B00208461 /* MBLoginViewController.swift in Sources */,
 				EBDCDAE9217591BF00963A2B /* MainViewModel.swift in Sources */,
+				EB4766562177977F001FD03A /* MBPersonalPage.swift in Sources */,
 				EBDCDAEF2175C0CB00963A2B /* MBLocation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

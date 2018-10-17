@@ -18,8 +18,9 @@ class MBLoginViewController: UIViewController {
     }
 
     private func renderUi() {
-        let loginButton = FBSDKLoginButton(type: .infoLight)
+        let loginButton = FBSDKLoginButton(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
         loginButton.center = view.center
+        loginButton.readPermissions = ["public_profile","email"]
         loginButton.delegate = self
         view.addSubview(loginButton)
     }

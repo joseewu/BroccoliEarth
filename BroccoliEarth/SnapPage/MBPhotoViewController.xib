@@ -12,6 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MBPhotoViewController" customModule="BroccoliEarth" customModuleProvider="target">
             <connections>
+                <outlet property="closeBut" destination="Awm-rV-Rni" id="Iyy-ZY-aVE"/>
                 <outlet property="previewView" destination="T0L-MP-wpN" id="VTZ-dg-pnb"/>
                 <outlet property="takePhotoButton" destination="e44-Nm-Pdz" id="DLw-2g-Jlo"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="ug5-9m-tga"/>
@@ -22,37 +23,50 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T0L-MP-wpN">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                    <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e44-Nm-Pdz">
-                            <rect key="frame" x="152.5" y="557" width="70" height="70"/>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="70" id="YGF-Zs-7AU"/>
-                                <constraint firstAttribute="width" constant="70" id="jgE-20-j6q"/>
-                            </constraints>
-                            <connections>
-                                <action selector="takePhoto:" destination="-1" eventType="touchUpInside" id="AqJ-Ry-D0j"/>
-                            </connections>
-                        </button>
-                    </subviews>
+                <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Awm-rV-Rni">
+                    <rect key="frame" x="15" y="45" width="25" height="25"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="25" id="Dbw-dh-VT3"/>
+                        <constraint firstAttribute="width" secondItem="Awm-rV-Rni" secondAttribute="height" multiplier="1:1" id="ROy-Cf-mfQ"/>
+                        <constraint firstAttribute="width" constant="25" id="ded-YH-stJ"/>
+                    </constraints>
+                    <state key="normal" image="delete"/>
+                    <connections>
+                        <action selector="closePage:" destination="-1" eventType="touchUpInside" id="lsp-8W-cuE"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e44-Nm-Pdz">
+                    <rect key="frame" x="152.5" y="557" width="70" height="70"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="bottom" secondItem="e44-Nm-Pdz" secondAttribute="bottom" constant="40" id="rxr-nd-CSD"/>
-                        <constraint firstItem="e44-Nm-Pdz" firstAttribute="centerX" secondItem="T0L-MP-wpN" secondAttribute="centerX" id="v2o-sg-yrR"/>
+                        <constraint firstAttribute="height" constant="70" id="YGF-Zs-7AU"/>
+                        <constraint firstAttribute="width" constant="70" id="jgE-20-j6q"/>
                     </constraints>
+                    <connections>
+                        <action selector="takePhoto:" destination="-1" eventType="touchUpInside" id="AqJ-Ry-D0j"/>
+                    </connections>
+                </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T0L-MP-wpN">
+                    <rect key="frame" x="0.0" y="100" width="375" height="417"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </view>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="T0L-MP-wpN" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="EY9-Ru-aLh"/>
+                <constraint firstItem="T0L-MP-wpN" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" constant="-150" id="EY9-Ru-aLh"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="T0L-MP-wpN" secondAttribute="trailing" id="L0Z-Fe-HMo"/>
-                <constraint firstItem="T0L-MP-wpN" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="hwk-jb-gWr"/>
+                <constraint firstItem="e44-Nm-Pdz" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="f0u-mM-bHj"/>
+                <constraint firstItem="Awm-rV-Rni" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="25" id="fTr-ls-3iN"/>
+                <constraint firstItem="T0L-MP-wpN" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="100" id="hwk-jb-gWr"/>
                 <constraint firstItem="T0L-MP-wpN" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="rVp-IS-cna"/>
+                <constraint firstItem="e44-Nm-Pdz" firstAttribute="top" secondItem="T0L-MP-wpN" secondAttribute="bottom" constant="40" id="u7l-PZ-7c5"/>
+                <constraint firstItem="Awm-rV-Rni" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="15" id="yUP-CE-Rof"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <point key="canvasLocation" x="138.40000000000001" y="153.37331334332833"/>
+            <point key="canvasLocation" x="138.40000000000001" y="152.47376311844079"/>
         </view>
     </objects>
+    <resources>
+        <image name="delete" width="102.40000152587891" height="102.40000152587891"/>
+    </resources>
 </document>

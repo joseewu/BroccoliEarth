@@ -56,9 +56,10 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         view.addSubview(floatButton)
     }
     private func showReportPage() {
-        //self.performSegue(withIdentifier: "showReportPage", sender: self)
         let vc:MBPhotoViewController = MBPhotoViewController()
-        navigationController?.pushViewController(vc, animated: true)
+        let navi:UINavigationController = UINavigationController(rootViewController: vc)
+        navi.isNavigationBarHidden = true
+        present(navi, animated: true, completion: nil)
     }
     private func showLoginPage() {
         let vc:MBLoginViewController = MBLoginViewController()

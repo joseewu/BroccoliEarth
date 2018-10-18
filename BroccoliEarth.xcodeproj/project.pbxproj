@@ -18,6 +18,10 @@
 		EB11A3C221708CDE00AF6C0C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB11A3C021708CDE00AF6C0C /* LaunchScreen.storyboard */; };
 		EB11A3CD21708CDE00AF6C0C /* BroccoliEarthTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB11A3CC21708CDE00AF6C0C /* BroccoliEarthTests.swift */; };
 		EB11A3D821708CDE00AF6C0C /* BroccoliEarthUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB11A3D721708CDE00AF6C0C /* BroccoliEarthUITests.swift */; };
+		EB1D38B521789B14009CE83E /* MBReportPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1D38B321789B14009CE83E /* MBReportPage.swift */; };
+		EB1D38B621789B14009CE83E /* MBReportPage.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB1D38B421789B14009CE83E /* MBReportPage.xib */; };
+		EB1D38B92178A1DC009CE83E /* PhotosPreviewPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1D38B72178A1DC009CE83E /* PhotosPreviewPage.swift */; };
+		EB1D38BA2178A1DC009CE83E /* PhotosPreviewPage.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB1D38B82178A1DC009CE83E /* PhotosPreviewPage.xib */; };
 		EB4766562177977F001FD03A /* MBPersonalPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB4766542177977F001FD03A /* MBPersonalPage.swift */; };
 		EB4766572177977F001FD03A /* MBPersonalPage.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB4766552177977F001FD03A /* MBPersonalPage.xib */; };
 		EB47665C21779DDB001FD03A /* ParametersBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB47665921779DDB001FD03A /* ParametersBuilder.swift */; };
@@ -27,6 +31,8 @@
 		EB4766642177A068001FD03A /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB4766632177A068001FD03A /* Login.storyboard */; };
 		EB7D801421762B3B00208461 /* MBLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB7D801221762B3B00208461 /* MBLoginViewController.swift */; };
 		EB7D801521762B3B00208461 /* MBLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB7D801321762B3B00208461 /* MBLoginViewController.xib */; };
+		EBC3F12A2178BFC600524467 /* ButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBC3F1282178BFC600524467 /* ButtonTableViewCell.swift */; };
+		EBC3F12B2178BFC600524467 /* ButtonTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EBC3F1292178BFC600524467 /* ButtonTableViewCell.xib */; };
 		EBDCDAE9217591BF00963A2B /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDCDAE8217591BF00963A2B /* MainViewModel.swift */; };
 		EBDCDAEB217592BC00963A2B /* MainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDCDAEA217592BC00963A2B /* MainService.swift */; };
 		EBDCDAED217597D700963A2B /* ReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDCDAEC217597D700963A2B /* ReportViewController.swift */; };
@@ -75,6 +81,10 @@
 		EB11A3D321708CDE00AF6C0C /* BroccoliEarthUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BroccoliEarthUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB11A3D721708CDE00AF6C0C /* BroccoliEarthUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BroccoliEarthUITests.swift; sourceTree = "<group>"; };
 		EB11A3D921708CDE00AF6C0C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EB1D38B321789B14009CE83E /* MBReportPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MBReportPage.swift; sourceTree = "<group>"; };
+		EB1D38B421789B14009CE83E /* MBReportPage.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MBReportPage.xib; sourceTree = "<group>"; };
+		EB1D38B72178A1DC009CE83E /* PhotosPreviewPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosPreviewPage.swift; sourceTree = "<group>"; };
+		EB1D38B82178A1DC009CE83E /* PhotosPreviewPage.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhotosPreviewPage.xib; sourceTree = "<group>"; };
 		EB4766542177977F001FD03A /* MBPersonalPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MBPersonalPage.swift; sourceTree = "<group>"; };
 		EB4766552177977F001FD03A /* MBPersonalPage.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MBPersonalPage.xib; sourceTree = "<group>"; };
 		EB47665921779DDB001FD03A /* ParametersBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParametersBuilder.swift; sourceTree = "<group>"; };
@@ -84,6 +94,8 @@
 		EB4766632177A068001FD03A /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		EB7D801221762B3B00208461 /* MBLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MBLoginViewController.swift; sourceTree = "<group>"; };
 		EB7D801321762B3B00208461 /* MBLoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MBLoginViewController.xib; sourceTree = "<group>"; };
+		EBC3F1282178BFC600524467 /* ButtonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonTableViewCell.swift; sourceTree = "<group>"; };
+		EBC3F1292178BFC600524467 /* ButtonTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ButtonTableViewCell.xib; sourceTree = "<group>"; };
 		EBDCDAE8217591BF00963A2B /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		EBDCDAEA217592BC00963A2B /* MainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainService.swift; sourceTree = "<group>"; };
 		EBDCDAEC217597D700963A2B /* ReportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportViewController.swift; sourceTree = "<group>"; };
@@ -176,7 +188,9 @@
 				EBDCDAEC217597D700963A2B /* ReportViewController.swift */,
 				EB4766542177977F001FD03A /* MBPersonalPage.swift */,
 				EB4766552177977F001FD03A /* MBPersonalPage.xib */,
+				EBC3F12C2178BFD400524467 /* Cells */,
 				EBDCDAE8217591BF00963A2B /* MainViewModel.swift */,
+				EB1D38BC2178A21D009CE83E /* PreviewPage */,
 				EBDCDAF52175CD7600963A2B /* Service */,
 				EBDCDAF42175CD6C00963A2B /* Model */,
 				EB47665321779757001FD03A /* SnapPage */,
@@ -207,11 +221,22 @@
 			path = BroccoliEarthUITests;
 			sourceTree = "<group>";
 		};
+		EB1D38BC2178A21D009CE83E /* PreviewPage */ = {
+			isa = PBXGroup;
+			children = (
+				EB1D38B72178A1DC009CE83E /* PhotosPreviewPage.swift */,
+				EB1D38B82178A1DC009CE83E /* PhotosPreviewPage.xib */,
+			);
+			path = PreviewPage;
+			sourceTree = "<group>";
+		};
 		EB47665321779757001FD03A /* SnapPage */ = {
 			isa = PBXGroup;
 			children = (
 				EBDCDAF02175CD6100963A2B /* MBPhotoViewController.swift */,
 				EBDCDAF12175CD6100963A2B /* MBPhotoViewController.xib */,
+				EB1D38B321789B14009CE83E /* MBReportPage.swift */,
+				EB1D38B421789B14009CE83E /* MBReportPage.xib */,
 			);
 			path = SnapPage;
 			sourceTree = "<group>";
@@ -235,6 +260,15 @@
 				EB4766632177A068001FD03A /* Login.storyboard */,
 			);
 			path = Login;
+			sourceTree = "<group>";
+		};
+		EBC3F12C2178BFD400524467 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				EBC3F1282178BFC600524467 /* ButtonTableViewCell.swift */,
+				EBC3F1292178BFC600524467 /* ButtonTableViewCell.xib */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		EBDCDAF42175CD6C00963A2B /* Model */ = {
@@ -361,12 +395,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EB1D38BA2178A1DC009CE83E /* PhotosPreviewPage.xib in Resources */,
 				EB4766642177A068001FD03A /* Login.storyboard in Resources */,
+				EB1D38B621789B14009CE83E /* MBReportPage.xib in Resources */,
 				EB11A3B821708CDC00AF6C0C /* art.scnassets in Resources */,
 				EB4766572177977F001FD03A /* MBPersonalPage.xib in Resources */,
 				EB11A3C221708CDE00AF6C0C /* LaunchScreen.storyboard in Resources */,
 				EB11A3BF21708CDE00AF6C0C /* Assets.xcassets in Resources */,
 				EB7D801521762B3B00208461 /* MBLoginViewController.xib in Resources */,
+				EBC3F12B2178BFC600524467 /* ButtonTableViewCell.xib in Resources */,
 				EBDCDAF32175CD6100963A2B /* MBPhotoViewController.xib in Resources */,
 				EB11A3BD21708CDC00AF6C0C /* Main.storyboard in Resources */,
 			);
@@ -499,12 +536,15 @@
 				EB11A3BA21708CDC00AF6C0C /* ViewController.swift in Sources */,
 				EB47666221779DFA001FD03A /* UIColor+HexString.swift in Sources */,
 				EBDCDAF22175CD6100963A2B /* MBPhotoViewController.swift in Sources */,
+				EBC3F12A2178BFC600524467 /* ButtonTableViewCell.swift in Sources */,
 				EB11A3B621708CDC00AF6C0C /* AppDelegate.swift in Sources */,
 				EB47665D21779DDB001FD03A /* APIResult.swift in Sources */,
+				EB1D38B521789B14009CE83E /* MBReportPage.swift in Sources */,
 				EB47666121779DFA001FD03A /* UILabel+letterSpacing.swift in Sources */,
 				EBDCDAEB217592BC00963A2B /* MainService.swift in Sources */,
 				EBDCDAED217597D700963A2B /* ReportViewController.swift in Sources */,
 				EB7D801421762B3B00208461 /* MBLoginViewController.swift in Sources */,
+				EB1D38B92178A1DC009CE83E /* PhotosPreviewPage.swift in Sources */,
 				EBDCDAE9217591BF00963A2B /* MainViewModel.swift in Sources */,
 				EB4766562177977F001FD03A /* MBPersonalPage.swift in Sources */,
 				EBDCDAEF2175C0CB00963A2B /* MBLocation.swift in Sources */,

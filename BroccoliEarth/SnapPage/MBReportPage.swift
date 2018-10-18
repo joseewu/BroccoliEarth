@@ -19,7 +19,7 @@ class MBReportPage: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        reportImg.contentMode = .scaleAspectFill
+        reportImg.contentMode = .scaleAspectFit
         reportImg.clipsToBounds = true
         reportImg.image = showImage
     }

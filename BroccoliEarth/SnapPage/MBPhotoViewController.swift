@@ -76,9 +76,9 @@ extension MBPhotoViewController:AVCapturePhotoCaptureDelegate {
         print(photo.timestamp)
         if let uu = photo.fileDataRepresentation() {
             let image = UIImage(data: uu, scale: 1.0)
-            let showImag = UIImageView(image: image)
-            showImag.contentMode = .scaleAspectFit
-            showImag.frame = UIScreen.main.bounds
+            let showImag = UIImageView(image: image?.resize(with: previewView.bounds.size))
+            showImag.frame.size = previewView.bounds.size
+            showImag.contentMode = .scaleAspectFill
             showReportPage(showImag.image)
             //compress data image?.jpegData(compressionQuality: 0.75)
         }
@@ -86,4 +86,22 @@ extension MBPhotoViewController:AVCapturePhotoCaptureDelegate {
     func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photoSampleBuffer: CMSampleBuffer?, previewPhoto previewPhotoSampleBuffer: CMSampleBuffer?, resolvedSettings: AVCaptureResolvedPhotoSettings, bracketSettings: AVCaptureBracketedStillImageSettings?, error: Error?) {
 
     }
+}
+extension UIImage{
+
+    func resize(with newSize: CGSize) -> UIImage {
+
+        let horizontalRatio = newSize.width / size.width
+        let verticalRatio = newSize.height / size.height
+
+        let ratio = max(horizontalRatio, verticalRatio)
+        let newSize = CGSize(width: size.width * ratio, height: size.height * ratio)
+        UIGraphicsBeginImageContextWithOptions(newSize, true, 0)
+        draw(in: CGRect(origin: CGPoint(x: 0, y: 0), size: newSize))
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return newImage!
+    }
+
+
 }

@@ -23,6 +23,10 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         navigationController?.navigationBar.isHidden = true
+        // Create a session configuration
+        let configuration = ARWorldTrackingConfiguration()
+        // Run the view's session
+        sceneView.session.run(configuration)
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,8 +46,8 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         renderUi()
     }
     private func renderUi() {
-        floatButton.buttonColor = UIColor(red: 5/255, green: 16/255, blue: 25/255, alpha: 1)
-        floatButton.addItem(icon: UIImage(named: "photoPicker")!) { [weak self] (item) in
+        floatButton.buttonColor = UIColor("#c44056")
+        floatButton.addItem(icon: UIImage(named: "mosquito")!) { [weak self] (item) in
             self?.showReportPage()
         }
         floatButton.addItem(icon: UIImage(named: "photoPicker")!) { [weak self] (item) in
@@ -74,15 +78,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         sceneLocationView.addLocationNodeWithConfirmedLocation(locationNode: annotationNode)
         
     }
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        // Create a session configuration
-        let configuration = ARWorldTrackingConfiguration()
-        // Run the view's session
-        sceneView.session.run(configuration)
-    }
-    
+
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
@@ -122,7 +118,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
 extension ViewController:SceneLocationViewDelegate {
     func sceneLocationViewDidAddSceneLocationEstimate(sceneLocationView: SceneLocationView, position: SCNVector3, location: CLLocation) {
         if let current = sceneLocationView.currentLocation()?.coordinate {
-            addNode(at: current)
+            //addNode(at: current)
         }
     }
     

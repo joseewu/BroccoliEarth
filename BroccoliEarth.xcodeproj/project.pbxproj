@@ -20,6 +20,11 @@
 		EB11A3D821708CDE00AF6C0C /* BroccoliEarthUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB11A3D721708CDE00AF6C0C /* BroccoliEarthUITests.swift */; };
 		EB4766562177977F001FD03A /* MBPersonalPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB4766542177977F001FD03A /* MBPersonalPage.swift */; };
 		EB4766572177977F001FD03A /* MBPersonalPage.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB4766552177977F001FD03A /* MBPersonalPage.xib */; };
+		EB47665C21779DDB001FD03A /* ParametersBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB47665921779DDB001FD03A /* ParametersBuilder.swift */; };
+		EB47665D21779DDB001FD03A /* APIResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB47665A21779DDB001FD03A /* APIResult.swift */; };
+		EB47666121779DFA001FD03A /* UILabel+letterSpacing.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB47665F21779DFA001FD03A /* UILabel+letterSpacing.swift */; };
+		EB47666221779DFA001FD03A /* UIColor+HexString.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB47666021779DFA001FD03A /* UIColor+HexString.swift */; };
+		EB4766642177A068001FD03A /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB4766632177A068001FD03A /* Login.storyboard */; };
 		EB7D801421762B3B00208461 /* MBLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB7D801221762B3B00208461 /* MBLoginViewController.swift */; };
 		EB7D801521762B3B00208461 /* MBLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB7D801321762B3B00208461 /* MBLoginViewController.xib */; };
 		EBDCDAE9217591BF00963A2B /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDCDAE8217591BF00963A2B /* MainViewModel.swift */; };
@@ -72,6 +77,11 @@
 		EB11A3D921708CDE00AF6C0C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EB4766542177977F001FD03A /* MBPersonalPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MBPersonalPage.swift; sourceTree = "<group>"; };
 		EB4766552177977F001FD03A /* MBPersonalPage.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MBPersonalPage.xib; sourceTree = "<group>"; };
+		EB47665921779DDB001FD03A /* ParametersBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParametersBuilder.swift; sourceTree = "<group>"; };
+		EB47665A21779DDB001FD03A /* APIResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIResult.swift; sourceTree = "<group>"; };
+		EB47665F21779DFA001FD03A /* UILabel+letterSpacing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UILabel+letterSpacing.swift"; sourceTree = "<group>"; };
+		EB47666021779DFA001FD03A /* UIColor+HexString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+HexString.swift"; sourceTree = "<group>"; };
+		EB4766632177A068001FD03A /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		EB7D801221762B3B00208461 /* MBLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MBLoginViewController.swift; sourceTree = "<group>"; };
 		EB7D801321762B3B00208461 /* MBLoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MBLoginViewController.xib; sourceTree = "<group>"; };
 		EBDCDAE8217591BF00963A2B /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
@@ -159,6 +169,7 @@
 		EB11A3B421708CDC00AF6C0C /* BroccoliEarth */ = {
 			isa = PBXGroup;
 			children = (
+				EB47665821779DDB001FD03A /* Utilities */,
 				EB11A3B521708CDC00AF6C0C /* AppDelegate.swift */,
 				EB7D801621762B4000208461 /* Login */,
 				EB11A3B921708CDC00AF6C0C /* ViewController.swift */,
@@ -205,11 +216,23 @@
 			path = SnapPage;
 			sourceTree = "<group>";
 		};
+		EB47665821779DDB001FD03A /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				EB47665921779DDB001FD03A /* ParametersBuilder.swift */,
+				EB47666021779DFA001FD03A /* UIColor+HexString.swift */,
+				EB47665F21779DFA001FD03A /* UILabel+letterSpacing.swift */,
+				EB47665A21779DDB001FD03A /* APIResult.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
 		EB7D801621762B4000208461 /* Login */ = {
 			isa = PBXGroup;
 			children = (
 				EB7D801221762B3B00208461 /* MBLoginViewController.swift */,
 				EB7D801321762B3B00208461 /* MBLoginViewController.xib */,
+				EB4766632177A068001FD03A /* Login.storyboard */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -338,6 +361,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EB4766642177A068001FD03A /* Login.storyboard in Resources */,
 				EB11A3B821708CDC00AF6C0C /* art.scnassets in Resources */,
 				EB4766572177977F001FD03A /* MBPersonalPage.xib in Resources */,
 				EB11A3C221708CDE00AF6C0C /* LaunchScreen.storyboard in Resources */,
@@ -473,14 +497,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				EB11A3BA21708CDC00AF6C0C /* ViewController.swift in Sources */,
+				EB47666221779DFA001FD03A /* UIColor+HexString.swift in Sources */,
 				EBDCDAF22175CD6100963A2B /* MBPhotoViewController.swift in Sources */,
 				EB11A3B621708CDC00AF6C0C /* AppDelegate.swift in Sources */,
+				EB47665D21779DDB001FD03A /* APIResult.swift in Sources */,
+				EB47666121779DFA001FD03A /* UILabel+letterSpacing.swift in Sources */,
 				EBDCDAEB217592BC00963A2B /* MainService.swift in Sources */,
 				EBDCDAED217597D700963A2B /* ReportViewController.swift in Sources */,
 				EB7D801421762B3B00208461 /* MBLoginViewController.swift in Sources */,
 				EBDCDAE9217591BF00963A2B /* MainViewModel.swift in Sources */,
 				EB4766562177977F001FD03A /* MBPersonalPage.swift in Sources */,
 				EBDCDAEF2175C0CB00963A2B /* MBLocation.swift in Sources */,
+				EB47665C21779DDB001FD03A /* ParametersBuilder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

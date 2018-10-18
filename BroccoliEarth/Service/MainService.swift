@@ -7,5 +7,21 @@
 //
 
 import Foundation
-import UIKit
+import CoreLocation
+import Alamofire
+
+class MainService {
+    init() {
+
+    }
+    public func getNumberOfReports(at:CLLocationCoordinate2D) {
+
+    }
+    public func sendMyLocation(at:CLLocationCoordinate2D){
+
+    }
+    public func sendReport(at:CLLocationCoordinate2D) {
+
+    }
+}
 

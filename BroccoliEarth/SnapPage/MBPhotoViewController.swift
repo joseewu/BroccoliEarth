@@ -56,8 +56,7 @@ class MBPhotoViewController: UIViewController {
             print(error)
         }
         videoPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession!)
-        videoPreviewLayer?.videoGravity = .resizeAspectFill
-        videoPreviewLayer?.frame = UIScreen.main.bounds
+        videoPreviewLayer?.videoGravity = .resize
         previewView.layer.addSublayer(videoPreviewLayer!)
         captureSession?.startRunning()
     }

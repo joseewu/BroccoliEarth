@@ -36,7 +36,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e44-Nm-Pdz">
-                    <rect key="frame" x="152.5" y="557" width="70" height="70"/>
+                    <rect key="frame" x="152.5" y="545" width="70" height="70"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="70" id="YGF-Zs-7AU"/>
@@ -47,13 +47,15 @@
                     </connections>
                 </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T0L-MP-wpN">
-                    <rect key="frame" x="0.0" y="100" width="375" height="417"/>
+                    <rect key="frame" x="0.0" y="100" width="375" height="405"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="T0L-MP-wpN" secondAttribute="height" multiplier="25:27" id="2Ti-Cf-YHP"/>
+                    </constraints>
                 </view>
             </subviews>
             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="T0L-MP-wpN" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" constant="-150" id="EY9-Ru-aLh"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="T0L-MP-wpN" secondAttribute="trailing" id="L0Z-Fe-HMo"/>
                 <constraint firstItem="e44-Nm-Pdz" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="f0u-mM-bHj"/>
                 <constraint firstItem="Awm-rV-Rni" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="25" id="fTr-ls-3iN"/>

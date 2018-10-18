@@ -22,10 +22,10 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="31Z-PK-IRN">
-                    <rect key="frame" x="36.5" y="73" width="302" height="170"/>
+                    <rect key="frame" x="36.5" y="73" width="302" height="326"/>
                     <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="width" secondItem="31Z-PK-IRN" secondAttribute="height" multiplier="16:9" id="C2P-en-hEf"/>
+                        <constraint firstAttribute="width" secondItem="31Z-PK-IRN" secondAttribute="height" multiplier="25:27" id="C2P-en-hEf"/>
                         <constraint firstAttribute="width" constant="302" id="NL2-pV-lEB"/>
                     </constraints>
                 </imageView>

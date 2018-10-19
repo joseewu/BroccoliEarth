@@ -39,6 +39,8 @@
 		EBDCDAEF2175C0CB00963A2B /* MBLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDCDAEE2175C0CB00963A2B /* MBLocation.swift */; };
 		EBDCDAF22175CD6100963A2B /* MBPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDCDAF02175CD6100963A2B /* MBPhotoViewController.swift */; };
 		EBDCDAF32175CD6100963A2B /* MBPhotoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EBDCDAF12175CD6100963A2B /* MBPhotoViewController.xib */; };
+		EBFF28E22179513F0044B1AE /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBFF28E12179513F0044B1AE /* UserManager.swift */; };
+		EBFF28E4217963890044B1AE /* LoginClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBFF28E3217963890044B1AE /* LoginClient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -102,6 +104,8 @@
 		EBDCDAEE2175C0CB00963A2B /* MBLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MBLocation.swift; sourceTree = "<group>"; };
 		EBDCDAF02175CD6100963A2B /* MBPhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MBPhotoViewController.swift; sourceTree = "<group>"; };
 		EBDCDAF12175CD6100963A2B /* MBPhotoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MBPhotoViewController.xib; sourceTree = "<group>"; };
+		EBFF28E12179513F0044B1AE /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
+		EBFF28E3217963890044B1AE /* LoginClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginClient.swift; sourceTree = "<group>"; };
 		F6CF5E0C9E1C673FA4286D68 /* Pods_BroccoliEarthUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BroccoliEarthUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -187,6 +191,7 @@
 				EB11A3B921708CDC00AF6C0C /* ViewController.swift */,
 				EBDCDAEC217597D700963A2B /* ReportViewController.swift */,
 				EB4766542177977F001FD03A /* MBPersonalPage.swift */,
+				EBFF28E12179513F0044B1AE /* UserManager.swift */,
 				EB4766552177977F001FD03A /* MBPersonalPage.xib */,
 				EBC3F12C2178BFD400524467 /* Cells */,
 				EBDCDAE8217591BF00963A2B /* MainViewModel.swift */,
@@ -283,6 +288,7 @@
 			isa = PBXGroup;
 			children = (
 				EBDCDAEA217592BC00963A2B /* MainService.swift */,
+				EBFF28E3217963890044B1AE /* LoginClient.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -545,10 +551,12 @@
 				EBDCDAED217597D700963A2B /* ReportViewController.swift in Sources */,
 				EB7D801421762B3B00208461 /* MBLoginViewController.swift in Sources */,
 				EB1D38B92178A1DC009CE83E /* PhotosPreviewPage.swift in Sources */,
+				EBFF28E4217963890044B1AE /* LoginClient.swift in Sources */,
 				EBDCDAE9217591BF00963A2B /* MainViewModel.swift in Sources */,
 				EB4766562177977F001FD03A /* MBPersonalPage.swift in Sources */,
 				EBDCDAEF2175C0CB00963A2B /* MBLocation.swift in Sources */,
 				EB47665C21779DDB001FD03A /* ParametersBuilder.swift in Sources */,
+				EBFF28E22179513F0044B1AE /* UserManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

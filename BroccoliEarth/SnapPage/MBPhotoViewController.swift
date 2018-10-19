@@ -23,7 +23,18 @@ class MBPhotoViewController: UIViewController {
         setPhotoCapture()
         renderUI()
     }
-
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        captureSession?.startRunning()
+        videoPreviewLayer?.frame.size = previewView.bounds.size
+    }
+    private func renderUI() {
+        takePhotoButton.layer.cornerRadius = takePhotoButton.frame.size.width / 2
+        takePhotoButton.backgroundColor = UIColor("#2d4868")
+        takePhotoButton.clipsToBounds = true
+        view.bringSubviewToFront(takePhotoButton)
+        view.bringSubviewToFront(closeBut)
+    }
     @IBAction func takePhoto(_ sender: Any) {
         guard let capturePhotoOutput = self.capturePhotoOutput else { return }
         let photoSettings = AVCapturePhotoSettings()
@@ -35,13 +46,6 @@ class MBPhotoViewController: UIViewController {
 
     @IBAction func closePage(_ sender: Any) {
         self.navigationController?.dismiss(animated: true, completion: nil)
-    }
-    private func renderUI() {
-        takePhotoButton.layer.cornerRadius = takePhotoButton.frame.size.width / 2
-        takePhotoButton.backgroundColor = UIColor("#2d4868")
-        takePhotoButton.clipsToBounds = true
-        view.bringSubviewToFront(takePhotoButton)
-        view.bringSubviewToFront(closeBut)
     }
     private func setPhotoCapture() {
         guard let captureDevice = AVCaptureDevice.default(for: .video) else { return }
@@ -64,27 +68,24 @@ class MBPhotoViewController: UIViewController {
         let reportPage = MBReportPage(with: img)
         navigationController?.pushViewController(reportPage, animated: true)
     }
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        captureSession?.startRunning()
-        videoPreviewLayer?.frame = previewView.bounds
-    }
 }
 extension MBPhotoViewController:AVCapturePhotoCaptureDelegate {
     func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
         print(photo.timestamp)
         if let uu = photo.fileDataRepresentation() {
             let image = UIImage(data: uu, scale: 1.0)
-            let showImag = UIImageView(image: image?.resize(with: previewView.bounds.size))
+            let resizeImag = image?.resize(with: previewView.bounds.size)
+            let showImag = UIImageView(image: resizeImag)
             showImag.frame.size = previewView.bounds.size
-            showImag.contentMode = .scaleAspectFill
+            showImag.contentMode = .scaleAspectFit
+            showImag.clipsToBounds = true
             showReportPage(showImag.image)
             //compress data image?.jpegData(compressionQuality: 0.75)
         }
     }
-    func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photoSampleBuffer: CMSampleBuffer?, previewPhoto previewPhotoSampleBuffer: CMSampleBuffer?, resolvedSettings: AVCaptureResolvedPhotoSettings, bracketSettings: AVCaptureBracketedStillImageSettings?, error: Error?) {
-
-    }
+//    func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photoSampleBuffer: CMSampleBuffer?, previewPhoto previewPhotoSampleBuffer: CMSampleBuffer?, resolvedSettings: AVCaptureResolvedPhotoSettings, bracketSettings: AVCaptureBracketedStillImageSettings?, error: Error?) {
+//
+//    }
 }
 extension UIImage{
 

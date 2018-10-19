@@ -34,7 +34,7 @@ class MBReportPage: BaseViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        reportImg.contentMode = .scaleToFill
+        reportImg.contentMode = .scaleAspectFit
         reportImg.clipsToBounds = true
         reportBut.layer.cornerRadius = 7
         reportBut.clipsToBounds = true

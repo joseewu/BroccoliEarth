@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MBPersonalPage: UIViewController {
+class MBPersonalPage: BaseViewController {
 
     @IBOutlet weak var levelBG: UIImageView!
     @IBOutlet weak var gradientView: UIView!
@@ -16,6 +16,10 @@ class MBPersonalPage: UIViewController {
         super.viewDidLoad()
         renderUi()
         // Do any additional setup after loading the view.
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.isNavigationBarHidden = false
     }
     private func renderUi() {
         levelBG.image = UIImage(named: "level")?.withRenderingMode(.alwaysTemplate)

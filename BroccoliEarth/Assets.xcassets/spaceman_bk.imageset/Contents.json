@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "mosquito.png",
+      "filename" : "cosmonaut-6.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "mosquito@2x.png",
+      "filename" : "cosmonaut-5.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "mosquito@3x.png",
+      "filename" : "cosmonaut-4.png",
       "scale" : "3x"
     }
   ],

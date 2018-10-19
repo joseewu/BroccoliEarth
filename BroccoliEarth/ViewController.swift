@@ -53,17 +53,22 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     }
     private func renderUi() {
         floatButton.buttonColor = UIColor("#c44056")
+        floatButton.addItem(icon: UIImage(named: "spaceman_bk")!) { [weak self] (item) in
+            self?.showPersonalPage()
+        }
         floatButton.addItem(icon: UIImage(named: "mosquito")!) { [weak self] (item) in
             self?.showReportPage()
         }
-        floatButton.addItem(icon: UIImage(named: "photoPicker")!) { [weak self] (item) in
-            self?.showLoginPage()
-        }
         view.addSubview(floatButton)
-        nameLabel.text = userManager.user?.name
-        progressView.progress = 0.5
-        profile.sd_setImage(with: userManager.user?.image) { (image, error, cache, url) in
-            print(error?.localizedDescription)
+        profile.layer.cornerRadius = profile.frame.size.width/2
+        profile.clipsToBounds = true
+        profile.contentMode = .scaleAspectFill
+        userManager.update = { [weak self] user in
+            self?.nameLabel.text = user.name
+            self?.progressView.progress = 0.5
+            self?.profile.sd_setImage(with: user.image) { (image, error, cache, url) in
+                print(error?.localizedDescription ?? "an error occur")
+            }
         }
     }
     private func showReportPage() {
@@ -72,8 +77,8 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             present(vc, animated: true, completion: nil)
         }
     }
-    private func showLoginPage() {
-        let vc:MBLoginViewController = MBLoginViewController()
+    private func showPersonalPage() {
+        let vc:MBPersonalPage = MBPersonalPage()
         navigationController?.pushViewController(vc, animated: true)
     }
     internal func addNode(at location:CLLocationCoordinate2D) {

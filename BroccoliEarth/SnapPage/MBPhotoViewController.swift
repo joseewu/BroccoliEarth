@@ -93,9 +93,9 @@ extension MBPhotoViewController:AVCapturePhotoCaptureDelegate {
             let image = UIImage(data: uu, scale: 1.0)
             let resizeImag = image?.resize(with: imageSize)
             let showImag = UIImageView(image: resizeImag)
-            showImag.contentMode = .scaleAspectFit
+            showImag.contentMode = .scaleAspectFill
             showImag.clipsToBounds = true
-            showReportPage(showImag.image)
+            showReportPage(resizeImag)
             //compress data image?.jpegData(compressionQuality: 0.75)
         }
     }

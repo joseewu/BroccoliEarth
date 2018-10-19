@@ -24,7 +24,14 @@ class UserManager {
         loginClient = client
     }
     private var loginClient:LoginClient
-    public var user:User?
+    public var user:User? {
+        didSet {
+            if let user = user {
+                update?(user)
+            }
+        }
+    }
+    public var update:((User) -> Void)?
     private var token:String? {
         return loginClient.userToken
     }

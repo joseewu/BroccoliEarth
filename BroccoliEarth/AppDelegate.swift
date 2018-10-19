@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         let userManager:UserManager = UserManager.shared
-        userManager.logout()
+        //userManager.logout()
         if !userManager.isUserLogin {
             window = UIWindow(frame: UIScreen.main.bounds)
             let loginStoryboard:UIStoryboard = UIStoryboard(name: "Login", bundle: nil)
@@ -27,11 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 window?.makeKeyAndVisible()
             }
         } else {
-            let loginStoryboard:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-            if let mainVC = loginStoryboard.instantiateViewController(withIdentifier: "mainNavigation") as? UINavigationController {
-                self.window?.rootViewController = mainVC
-                window?.makeKeyAndVisible()
-            }
+            userManager.login()
         }
         return true
     }

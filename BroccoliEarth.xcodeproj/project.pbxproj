@@ -112,6 +112,7 @@
 		EBFF28E72179B1270044B1AE /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		EBFF28E92179BE130044B1AE /* BaseNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
 		EBFF28EC217A16110044B1AE /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		EBFF28EE217A58B90044B1AE /* BroccoliEarth.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BroccoliEarth.entitlements; sourceTree = "<group>"; };
 		F6CF5E0C9E1C673FA4286D68 /* Pods_BroccoliEarthUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BroccoliEarthUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -191,6 +192,7 @@
 		EB11A3B421708CDC00AF6C0C /* BroccoliEarth */ = {
 			isa = PBXGroup;
 			children = (
+				EBFF28EE217A58B90044B1AE /* BroccoliEarth.entitlements */,
 				EB47665821779DDB001FD03A /* Utilities */,
 				EB11A3B521708CDC00AF6C0C /* AppDelegate.swift */,
 				EBFF28E72179B1270044B1AE /* BaseViewController.swift */,
@@ -382,6 +384,11 @@
 				TargetAttributes = {
 					EB11A3B121708CDC00AF6C0C = {
 						CreatedOnToolsVersion = 10.0;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 					EB11A3C721708CDE00AF6C0C = {
 						CreatedOnToolsVersion = 10.0;
@@ -752,6 +759,7 @@
 			baseConfigurationReference = 867BB1D01CA3F86F4F450DFA /* Pods-BroccoliEarth.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = BroccoliEarth/BroccoliEarth.entitlements;
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 53PCKL938K;
 				INFOPLIST_FILE = BroccoliEarth/Info.plist;
@@ -773,6 +781,7 @@
 			baseConfigurationReference = 2C776749293755DC22A93967 /* Pods-BroccoliEarth.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = BroccoliEarth/BroccoliEarth.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 53PCKL938K;

@@ -33,7 +33,7 @@ class UserManager {
     }
     public var update:((User) -> Void)?
     private var token:String? {
-        return loginClient.userToken
+        return FBSDKAccessToken.current()?.tokenString
     }
     public var isUserLogin:Bool {
         return (token != nil) ? true:false

@@ -9,16 +9,17 @@
 import UIKit
 import FBSDKLoginKit
 
-class MBLoginViewController: UIViewController {
+class MBLoginViewController: BaseViewController {
 
-
+    @IBOutlet weak var loginButton: FBSDKLoginButton!
     override func viewDidLoad() {
         super.viewDidLoad()
+        renderUi()
         // Do any additional setup after loading the view.
     }
 
     private func renderUi() {
-
+        loginButton.delegate = self
     }
 
 }
@@ -27,6 +28,6 @@ extension MBLoginViewController:FBSDKLoginButtonDelegate {
 
     }
     func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
-        print("user : \(FBSDKAccessToken.current()?.tokenString ?? "no")")
+        UserManager.shared.login()
     }
 }

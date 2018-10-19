@@ -10,62 +10,62 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Delegate-->
+        <!--MBLoginViewController-->
         <scene sceneID="2A5-0L-729">
             <objects>
-                <viewController id="rMs-AD-M6n" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MBLoginViewController" id="rMs-AD-M6n" userLabel="MBLoginViewController" customClass="MBLoginViewController" customModule="BroccoliEarth" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="kIz-Pi-xDn">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launch" translatesAutoresizingMaskIntoConstraints="NO" id="MbM-vn-CA2">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gradient_black" translatesAutoresizingMaskIntoConstraints="NO" id="VfG-VP-FBh">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login with" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jWq-nk-3Xe">
-                                <rect key="frame" x="146" y="393" width="83" height="24"/>
+                                <rect key="frame" x="152" y="393" width="71.5" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="24" id="gb8-6I-p6N"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="PingFangHK-Light" family="PingFang HK" pointSize="15"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tbc-VJ-BHx" customClass="FBSDKLoginButton">
-                                <rect key="frame" x="87.5" y="467" width="200" height="50"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xnm-a4-vhl" customClass="FBSDKLoginButton">
+                                <rect key="frame" x="112.5" y="457" width="150" height="35"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="91f-dx-0yP"/>
-                                    <constraint firstAttribute="width" constant="200" id="QLW-Xg-eiK"/>
+                                    <constraint firstAttribute="height" constant="35" id="aCr-i4-B0c"/>
+                                    <constraint firstAttribute="width" constant="150" id="nYk-Yh-Mgy"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
-                                <connections>
-                                    <outlet property="delegate" destination="rMs-AD-M6n" id="dYV-7C-B9e"/>
-                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="VfG-VP-FBh" firstAttribute="leading" secondItem="tc3-C7-M7W" secondAttribute="leading" id="1h1-GZ-Suh"/>
                             <constraint firstItem="VfG-VP-FBh" firstAttribute="top" secondItem="kIz-Pi-xDn" secondAttribute="top" id="5mM-Hm-MTW"/>
-                            <constraint firstItem="MbM-vn-CA2" firstAttribute="top" secondItem="tc3-C7-M7W" secondAttribute="top" id="69Z-gb-kmZ"/>
+                            <constraint firstItem="MbM-vn-CA2" firstAttribute="top" secondItem="tc3-C7-M7W" secondAttribute="top" constant="-20" id="69Z-gb-kmZ"/>
                             <constraint firstItem="tc3-C7-M7W" firstAttribute="bottom" secondItem="jWq-nk-3Xe" secondAttribute="bottom" constant="250" id="BiG-Zg-CWA"/>
-                            <constraint firstItem="Tbc-VJ-BHx" firstAttribute="centerX" secondItem="jWq-nk-3Xe" secondAttribute="centerX" id="En8-yQ-r2J"/>
                             <constraint firstItem="tc3-C7-M7W" firstAttribute="bottom" secondItem="MbM-vn-CA2" secondAttribute="bottom" id="Icr-ET-4Ls"/>
                             <constraint firstItem="VfG-VP-FBh" firstAttribute="bottom" secondItem="tc3-C7-M7W" secondAttribute="bottom" id="Vs5-ia-ul1"/>
-                            <constraint firstItem="Tbc-VJ-BHx" firstAttribute="top" secondItem="jWq-nk-3Xe" secondAttribute="bottom" constant="50" id="abL-L1-nQH"/>
                             <constraint firstItem="jWq-nk-3Xe" firstAttribute="centerX" secondItem="tc3-C7-M7W" secondAttribute="centerX" id="bpR-FM-pxa"/>
+                            <constraint firstItem="xnm-a4-vhl" firstAttribute="top" secondItem="jWq-nk-3Xe" secondAttribute="bottom" constant="40" id="lI1-ZC-slc"/>
                             <constraint firstItem="MbM-vn-CA2" firstAttribute="leading" secondItem="tc3-C7-M7W" secondAttribute="leading" id="lUl-C4-ZCz"/>
                             <constraint firstItem="VfG-VP-FBh" firstAttribute="trailing" secondItem="tc3-C7-M7W" secondAttribute="trailing" id="sew-Fj-3Vj"/>
+                            <constraint firstItem="xnm-a4-vhl" firstAttribute="centerX" secondItem="tc3-C7-M7W" secondAttribute="centerX" id="w7N-HF-loL"/>
                             <constraint firstItem="tc3-C7-M7W" firstAttribute="trailing" secondItem="MbM-vn-CA2" secondAttribute="trailing" id="zBQ-N2-Rb0"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="tc3-C7-M7W"/>
                     </view>
+                    <connections>
+                        <outlet property="loginButton" destination="xnm-a4-vhl" id="btH-lg-zRK"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="J13-Cm-IT9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-228" y="-632"/>
+            <point key="canvasLocation" x="-228" y="-632.83358320839591"/>
         </scene>
     </scenes>
     <resources>

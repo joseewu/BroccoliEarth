@@ -30,7 +30,6 @@
 		EB47666221779DFA001FD03A /* UIColor+HexString.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB47666021779DFA001FD03A /* UIColor+HexString.swift */; };
 		EB4766642177A068001FD03A /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB4766632177A068001FD03A /* Login.storyboard */; };
 		EB7D801421762B3B00208461 /* MBLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB7D801221762B3B00208461 /* MBLoginViewController.swift */; };
-		EB7D801521762B3B00208461 /* MBLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB7D801321762B3B00208461 /* MBLoginViewController.xib */; };
 		EBC3F12A2178BFC600524467 /* ButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBC3F1282178BFC600524467 /* ButtonTableViewCell.swift */; };
 		EBC3F12B2178BFC600524467 /* ButtonTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EBC3F1292178BFC600524467 /* ButtonTableViewCell.xib */; };
 		EBDCDAE9217591BF00963A2B /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDCDAE8217591BF00963A2B /* MainViewModel.swift */; };
@@ -44,6 +43,7 @@
 		EBFF28E621796B030044B1AE /* ReportPages.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBFF28E521796B030044B1AE /* ReportPages.storyboard */; };
 		EBFF28E82179B1270044B1AE /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBFF28E72179B1270044B1AE /* BaseViewController.swift */; };
 		EBFF28EA2179BE130044B1AE /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBFF28E92179BE130044B1AE /* BaseNavigationController.swift */; };
+		EBFF28ED217A16110044B1AE /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBFF28EC217A16110044B1AE /* User.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -98,7 +98,6 @@
 		EB47666021779DFA001FD03A /* UIColor+HexString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+HexString.swift"; sourceTree = "<group>"; };
 		EB4766632177A068001FD03A /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		EB7D801221762B3B00208461 /* MBLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MBLoginViewController.swift; sourceTree = "<group>"; };
-		EB7D801321762B3B00208461 /* MBLoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MBLoginViewController.xib; sourceTree = "<group>"; };
 		EBC3F1282178BFC600524467 /* ButtonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonTableViewCell.swift; sourceTree = "<group>"; };
 		EBC3F1292178BFC600524467 /* ButtonTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ButtonTableViewCell.xib; sourceTree = "<group>"; };
 		EBDCDAE8217591BF00963A2B /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
@@ -112,6 +111,7 @@
 		EBFF28E521796B030044B1AE /* ReportPages.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ReportPages.storyboard; sourceTree = "<group>"; };
 		EBFF28E72179B1270044B1AE /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		EBFF28E92179BE130044B1AE /* BaseNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
+		EBFF28EC217A16110044B1AE /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		F6CF5E0C9E1C673FA4286D68 /* Pods_BroccoliEarthUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BroccoliEarthUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -200,8 +200,8 @@
 				EB11A3B921708CDC00AF6C0C /* ViewController.swift */,
 				EBDCDAEC217597D700963A2B /* ReportViewController.swift */,
 				EB4766542177977F001FD03A /* MBPersonalPage.swift */,
-				EBFF28E12179513F0044B1AE /* UserManager.swift */,
 				EB4766552177977F001FD03A /* MBPersonalPage.xib */,
+				EBFF28EB217A008C0044B1AE /* Manager */,
 				EBC3F12C2178BFD400524467 /* Cells */,
 				EBDCDAE8217591BF00963A2B /* MainViewModel.swift */,
 				EB1D38BC2178A21D009CE83E /* PreviewPage */,
@@ -270,7 +270,6 @@
 			isa = PBXGroup;
 			children = (
 				EB7D801221762B3B00208461 /* MBLoginViewController.swift */,
-				EB7D801321762B3B00208461 /* MBLoginViewController.xib */,
 				EB4766632177A068001FD03A /* Login.storyboard */,
 			);
 			path = Login;
@@ -289,6 +288,7 @@
 			isa = PBXGroup;
 			children = (
 				EBDCDAEE2175C0CB00963A2B /* MBLocation.swift */,
+				EBFF28EC217A16110044B1AE /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -300,6 +300,14 @@
 				EBFF28E3217963890044B1AE /* LoginClient.swift */,
 			);
 			path = Service;
+			sourceTree = "<group>";
+		};
+		EBFF28EB217A008C0044B1AE /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				EBFF28E12179513F0044B1AE /* UserManager.swift */,
+			);
+			path = Manager;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -418,7 +426,6 @@
 				EBFF28E621796B030044B1AE /* ReportPages.storyboard in Resources */,
 				EB11A3C221708CDE00AF6C0C /* LaunchScreen.storyboard in Resources */,
 				EB11A3BF21708CDE00AF6C0C /* Assets.xcassets in Resources */,
-				EB7D801521762B3B00208461 /* MBLoginViewController.xib in Resources */,
 				EBC3F12B2178BFC600524467 /* ButtonTableViewCell.xib in Resources */,
 				EBDCDAF32175CD6100963A2B /* MBPhotoViewController.xib in Resources */,
 				EB11A3BD21708CDC00AF6C0C /* Main.storyboard in Resources */,
@@ -569,6 +576,7 @@
 				EBDCDAEF2175C0CB00963A2B /* MBLocation.swift in Sources */,
 				EB47665C21779DDB001FD03A /* ParametersBuilder.swift in Sources */,
 				EBFF28E22179513F0044B1AE /* UserManager.swift in Sources */,
+				EBFF28ED217A16110044B1AE /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

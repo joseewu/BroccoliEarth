@@ -13,7 +13,7 @@
         <!--Navigation Controller-->
         <scene sceneID="6RT-T0-xAR">
             <objects>
-                <navigationController navigationBarHidden="YES" id="bmf-J2-MPC" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="mainNavigation" navigationBarHidden="YES" id="bmf-J2-MPC" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="XvR-P5-M3v">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -25,16 +25,6 @@
             </objects>
             <point key="canvasLocation" x="-1226" y="133"/>
         </scene>
-        <!--Login-->
-        <scene sceneID="oNk-zq-sOt">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Login" id="COh-j8-RA0" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="KBX-dG-JXh"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Afu-BT-jC4" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-730" y="479"/>
-        </scene>
         <!--View Controller-->
         <scene sceneID="tXr-a1-R10">
             <objects>
@@ -43,24 +33,27 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BrB-h1-WRS">
+                            <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BrB-h1-WRS" customClass="sceneLocationView">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </arscnView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UDO-xa-V2X">
-                                <rect key="frame" x="31" y="30" width="161" height="49"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="jisddjfsidfjsdlf" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UDO-xa-V2X">
+                                <rect key="frame" x="31" y="40" width="105.5" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="egm-nX-FFZ"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="VpL-9i-LuZ">
-                                <rect key="frame" x="31" y="50" width="150" height="20"/>
+                                <rect key="frame" x="31" y="90" width="150" height="10"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="BhX-bG-Tng"/>
-                                    <constraint firstAttribute="height" constant="20" id="rnN-wz-Jrv"/>
+                                    <constraint firstAttribute="height" constant="10" id="rnN-wz-Jrv"/>
                                 </constraints>
                             </progressView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1ww-Vd-kGU">
-                                <rect key="frame" x="231" y="20" width="66" height="66"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photoPicker" translatesAutoresizingMaskIntoConstraints="NO" id="1ww-Vd-kGU">
+                                <rect key="frame" x="269" y="30" width="66" height="66"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="1ww-Vd-kGU" secondAttribute="height" multiplier="1:1" id="LOZ-Oh-rgX"/>
                                     <constraint firstAttribute="width" constant="66" id="Zlx-2Q-Mjx"/>
@@ -69,25 +62,26 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="VpL-9i-LuZ" firstAttribute="top" secondItem="fQZ-KI-GVf" secondAttribute="top" constant="30" id="2OT-qq-HbV"/>
                             <constraint firstItem="BrB-h1-WRS" firstAttribute="leading" secondItem="fQZ-KI-GVf" secondAttribute="leading" id="GsS-dJ-CKf"/>
-                            <constraint firstItem="fQZ-KI-GVf" firstAttribute="bottom" secondItem="UDO-xa-V2X" secondAttribute="bottom" constant="588" id="O15-2H-7e8"/>
+                            <constraint firstItem="1ww-Vd-kGU" firstAttribute="leading" relation="lessThanOrEqual" secondItem="UDO-xa-V2X" secondAttribute="trailing" constant="150" id="LTy-DB-y8C"/>
                             <constraint firstItem="VpL-9i-LuZ" firstAttribute="leading" secondItem="UDO-xa-V2X" secondAttribute="leading" id="OXV-dW-5W8"/>
                             <constraint firstItem="VpL-9i-LuZ" firstAttribute="leading" secondItem="U0K-SW-4ec" secondAttribute="leadingMargin" constant="15" id="Ojo-wg-2iu"/>
+                            <constraint firstItem="VpL-9i-LuZ" firstAttribute="bottom" secondItem="UDO-xa-V2X" secondAttribute="top" constant="60" id="VPA-OE-pRC"/>
                             <constraint firstItem="BrB-h1-WRS" firstAttribute="bottom" secondItem="fQZ-KI-GVf" secondAttribute="bottom" id="VpT-BR-CcM"/>
                             <constraint firstItem="BrB-h1-WRS" firstAttribute="trailing" secondItem="fQZ-KI-GVf" secondAttribute="trailing" id="XyZ-9z-H8e"/>
-                            <constraint firstItem="1ww-Vd-kGU" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="UDO-xa-V2X" secondAttribute="trailing" constant="8" symbolic="YES" id="lbz-gP-TNQ"/>
                             <constraint firstItem="BrB-h1-WRS" firstAttribute="top" secondItem="U0K-SW-4ec" secondAttribute="top" id="rJc-2c-zQA"/>
-                            <constraint firstItem="fQZ-KI-GVf" firstAttribute="trailing" secondItem="1ww-Vd-kGU" secondAttribute="trailing" constant="78" id="u0t-Rg-2GD"/>
-                            <constraint firstItem="1ww-Vd-kGU" firstAttribute="leading" secondItem="UDO-xa-V2X" secondAttribute="trailing" constant="39" id="v77-yz-RJo"/>
-                            <constraint firstItem="UDO-xa-V2X" firstAttribute="top" secondItem="fQZ-KI-GVf" secondAttribute="top" constant="10" id="xj3-By-l12"/>
-                            <constraint firstItem="1ww-Vd-kGU" firstAttribute="top" secondItem="fQZ-KI-GVf" secondAttribute="top" id="xzK-hw-2z4"/>
+                            <constraint firstItem="fQZ-KI-GVf" firstAttribute="trailing" secondItem="1ww-Vd-kGU" secondAttribute="trailing" constant="40" id="u0t-Rg-2GD"/>
+                            <constraint firstItem="UDO-xa-V2X" firstAttribute="top" secondItem="fQZ-KI-GVf" secondAttribute="top" constant="20" id="xj3-By-l12"/>
+                            <constraint firstItem="1ww-Vd-kGU" firstAttribute="top" secondItem="fQZ-KI-GVf" secondAttribute="top" constant="10" id="xzK-hw-2z4"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="fQZ-KI-GVf"/>
                     </view>
                     <navigationItem key="navigationItem" id="Tco-hA-o65"/>
                     <connections>
-                        <outlet property="sceneView" destination="BrB-h1-WRS" id="5nT-qQ-ynl"/>
+                        <outlet property="nameLabel" destination="UDO-xa-V2X" id="Izh-Qy-ijg"/>
+                        <outlet property="profile" destination="1ww-Vd-kGU" id="WWz-YG-bKx"/>
+                        <outlet property="progressView" destination="VpL-9i-LuZ" id="0ST-tK-j3Y"/>
+                        <outlet property="sceneView" destination="BrB-h1-WRS" id="pDn-nn-FTB"/>
                         <segue destination="s0j-oc-hUR" kind="show" identifier="showReportPage" id="SRV-Jn-otN"/>
                     </connections>
                 </viewController>
@@ -111,4 +105,8 @@
             <point key="canvasLocation" x="743" y="25"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="photoPicker" width="64" height="64"/>
+    </resources>
+    <color key="tintColor" red="1" green="0.31372549020000001" blue="0.45098039220000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

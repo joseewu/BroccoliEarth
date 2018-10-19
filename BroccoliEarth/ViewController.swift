@@ -12,14 +12,20 @@ import ARKit
 import ARCL
 import CoreLocation
 import Floaty
+import SDWebImage
 
 class ViewController: UIViewController, ARSCNViewDelegate {
 
     @IBOutlet var sceneView: ARSCNView!
 
-    var floatButton:Floaty = Floaty(size: 60)
+    var floatButton:Floaty = Floaty(size: 65)
     var sceneLocationView = SceneLocationView()
     var currentLocation:CLLocationCoordinate2D?
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var progressView: UIProgressView!
+    @IBOutlet weak var profile: UIImageView!
+
+    private let userManager:UserManager = UserManager.shared
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         navigationController?.navigationBar.isHidden = true
@@ -38,7 +44,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         sceneView.showsStatistics = false
         // Create a new scene
         sceneLocationView.locationDelegate = self
-        let scene = SCNScene(named: "art.scnassets/Mosquito_Color.dae")!
+        let scene = SCNScene(named: "art.scnassets/Mosquito_Color.scn")!
         // Set the scene to the view
         sceneView.scene = scene
         sceneLocationView.run()
@@ -54,6 +60,11 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             self?.showLoginPage()
         }
         view.addSubview(floatButton)
+        nameLabel.text = userManager.user?.name
+        progressView.progress = 0.5
+        profile.sd_setImage(with: userManager.user?.image) { (image, error, cache, url) in
+            print(error?.localizedDescription)
+        }
     }
     private func showReportPage() {
         let storyboard:UIStoryboard = UIStoryboard(name: "ReportPages", bundle: nil)
@@ -90,16 +101,6 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         super.viewDidLayoutSubviews()
         sceneLocationView.frame = view.bounds
     }
-    // MARK: - ARSCNViewDelegate
-    
-/*
-    // Override to create and configure nodes for anchors added to the view's session.
-    func renderer(_ renderer: SCNSceneRenderer, nodeFor anchor: ARAnchor) -> SCNNode? {
-        let node = SCNNode()
-     
-        return node
-    }
-*/
     
     func session(_ session: ARSession, didFailWithError error: Error) {
         // Present an error message to the user

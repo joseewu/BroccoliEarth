@@ -8,9 +8,24 @@
 
 import UIKit
 
-class MBReportPage: UIViewController {
-    private var showImage:UIImage? = nil
+class MBReportPage: BaseViewController {
+    public var showImage:UIImage? {
+        didSet {
+            loadViewIfNeeded()
+            reportImg.image = showImage
+        }
+    }
     @IBOutlet weak var reportImg: UIImageView!
+    @IBOutlet weak var reportBut: UIButton!
+    @IBOutlet weak var typeSegment: UISegmentedControl!
+    @IBAction func didTapReport(_ sender: Any) {
+        //TODO: send report imformation
+
+    }
+    @IBAction func didSwitchType(_ sender: UISegmentedControl) {
+        print(sender.selectedSegmentIndex)
+    }
+
     convenience init(with imag:UIImage?) {
         self.init()
         if let imag = imag {
@@ -19,16 +34,19 @@ class MBReportPage: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        reportImg.contentMode = .scaleAspectFit
+        reportImg.contentMode = .scaleToFill
         reportImg.clipsToBounds = true
-        reportImg.image = showImage
+        reportBut.layer.cornerRadius = 7
+        reportBut.clipsToBounds = true
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.isNavigationBarHidden = false
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        navigationController?.isNavigationBarHidden = true
     }
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        navigationController?.isNavigationBarHidden = false
     }
 }

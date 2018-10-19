@@ -41,6 +41,9 @@
 		EBDCDAF32175CD6100963A2B /* MBPhotoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EBDCDAF12175CD6100963A2B /* MBPhotoViewController.xib */; };
 		EBFF28E22179513F0044B1AE /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBFF28E12179513F0044B1AE /* UserManager.swift */; };
 		EBFF28E4217963890044B1AE /* LoginClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBFF28E3217963890044B1AE /* LoginClient.swift */; };
+		EBFF28E621796B030044B1AE /* ReportPages.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBFF28E521796B030044B1AE /* ReportPages.storyboard */; };
+		EBFF28E82179B1270044B1AE /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBFF28E72179B1270044B1AE /* BaseViewController.swift */; };
+		EBFF28EA2179BE130044B1AE /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBFF28E92179BE130044B1AE /* BaseNavigationController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -106,6 +109,9 @@
 		EBDCDAF12175CD6100963A2B /* MBPhotoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MBPhotoViewController.xib; sourceTree = "<group>"; };
 		EBFF28E12179513F0044B1AE /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		EBFF28E3217963890044B1AE /* LoginClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginClient.swift; sourceTree = "<group>"; };
+		EBFF28E521796B030044B1AE /* ReportPages.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ReportPages.storyboard; sourceTree = "<group>"; };
+		EBFF28E72179B1270044B1AE /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		EBFF28E92179BE130044B1AE /* BaseNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
 		F6CF5E0C9E1C673FA4286D68 /* Pods_BroccoliEarthUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BroccoliEarthUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -187,6 +193,9 @@
 			children = (
 				EB47665821779DDB001FD03A /* Utilities */,
 				EB11A3B521708CDC00AF6C0C /* AppDelegate.swift */,
+				EBFF28E72179B1270044B1AE /* BaseViewController.swift */,
+				EBFF28E92179BE130044B1AE /* BaseNavigationController.swift */,
+				EB47665321779757001FD03A /* SnapPage */,
 				EB7D801621762B4000208461 /* Login */,
 				EB11A3B921708CDC00AF6C0C /* ViewController.swift */,
 				EBDCDAEC217597D700963A2B /* ReportViewController.swift */,
@@ -198,7 +207,6 @@
 				EB1D38BC2178A21D009CE83E /* PreviewPage */,
 				EBDCDAF52175CD7600963A2B /* Service */,
 				EBDCDAF42175CD6C00963A2B /* Model */,
-				EB47665321779757001FD03A /* SnapPage */,
 				EB11A3BB21708CDC00AF6C0C /* Main.storyboard */,
 				EB11A3B721708CDC00AF6C0C /* art.scnassets */,
 				EB11A3BE21708CDE00AF6C0C /* Assets.xcassets */,
@@ -238,6 +246,7 @@
 		EB47665321779757001FD03A /* SnapPage */ = {
 			isa = PBXGroup;
 			children = (
+				EBFF28E521796B030044B1AE /* ReportPages.storyboard */,
 				EBDCDAF02175CD6100963A2B /* MBPhotoViewController.swift */,
 				EBDCDAF12175CD6100963A2B /* MBPhotoViewController.xib */,
 				EB1D38B321789B14009CE83E /* MBReportPage.swift */,
@@ -406,6 +415,7 @@
 				EB1D38B621789B14009CE83E /* MBReportPage.xib in Resources */,
 				EB11A3B821708CDC00AF6C0C /* art.scnassets in Resources */,
 				EB4766572177977F001FD03A /* MBPersonalPage.xib in Resources */,
+				EBFF28E621796B030044B1AE /* ReportPages.storyboard in Resources */,
 				EB11A3C221708CDE00AF6C0C /* LaunchScreen.storyboard in Resources */,
 				EB11A3BF21708CDE00AF6C0C /* Assets.xcassets in Resources */,
 				EB7D801521762B3B00208461 /* MBLoginViewController.xib in Resources */,
@@ -543,9 +553,11 @@
 				EB47666221779DFA001FD03A /* UIColor+HexString.swift in Sources */,
 				EBDCDAF22175CD6100963A2B /* MBPhotoViewController.swift in Sources */,
 				EBC3F12A2178BFC600524467 /* ButtonTableViewCell.swift in Sources */,
+				EBFF28E82179B1270044B1AE /* BaseViewController.swift in Sources */,
 				EB11A3B621708CDC00AF6C0C /* AppDelegate.swift in Sources */,
 				EB47665D21779DDB001FD03A /* APIResult.swift in Sources */,
 				EB1D38B521789B14009CE83E /* MBReportPage.swift in Sources */,
+				EBFF28EA2179BE130044B1AE /* BaseNavigationController.swift in Sources */,
 				EB47666121779DFA001FD03A /* UILabel+letterSpacing.swift in Sources */,
 				EBDCDAEB217592BC00963A2B /* MainService.swift in Sources */,
 				EBDCDAED217597D700963A2B /* ReportViewController.swift in Sources */,

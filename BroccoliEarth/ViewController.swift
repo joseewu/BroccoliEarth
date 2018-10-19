@@ -56,10 +56,10 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         view.addSubview(floatButton)
     }
     private func showReportPage() {
-        let vc:MBPhotoViewController = MBPhotoViewController()
-        let navi:UINavigationController = UINavigationController(rootViewController: vc)
-        navi.isNavigationBarHidden = true
-        present(navi, animated: true, completion: nil)
+        let storyboard:UIStoryboard = UIStoryboard(name: "ReportPages", bundle: nil)
+        if let vc:BaseNavigationController = storyboard.instantiateViewController(withIdentifier: "baseNavigation") as? BaseNavigationController {
+            present(vc, animated: true, completion: nil)
+        }
     }
     private func showLoginPage() {
         let vc:MBLoginViewController = MBLoginViewController()

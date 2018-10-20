@@ -16,14 +16,19 @@ enum MBPersonalPageCellType {
     var title:String {
         switch self {
         case .map:
-            return ""
-        default:
-            return "jsisd"
+            return "Mosquito Map"
+        case .logout:
+            return "Logout"
+        case .question:
+            return "Mosquito Q&A"
+        case .myReports:
+            return "My reports"
         }
     }
 }
 class MBPersonalPage: BaseViewController {
 
+    @IBOutlet weak var levelInfo: UILabel!
     @IBOutlet weak var levelBG: UIImageView!
     @IBOutlet weak var gradientView: UIView!
     @IBOutlet weak var tableView: UITableView!
@@ -42,6 +47,7 @@ class MBPersonalPage: BaseViewController {
         navigationController?.isNavigationBarHidden = false
     }
     private func renderUi() {
+        levelInfo.text = "Lv.\(user?.level ?? 1)"
         levelBG.layer.cornerRadius = levelBG.frame.size.width/2
         levelBG.clipsToBounds = true
         levelBG.sd_setImage(with: user?.image) { (_, _, _, _) in
@@ -50,6 +56,7 @@ class MBPersonalPage: BaseViewController {
         name.text = user?.name
         levelIcon.image = UIImage(named: "fly_swatter")?.withRenderingMode(.alwaysTemplate)
         tableView.register(UINib(nibName: "ButtonTableViewCell", bundle: nil), forCellReuseIdentifier: "ButtonTableViewCell")
+        tableView.backgroundColor = UIColor.clear
         tableView.isScrollEnabled = false
         tableView.separatorStyle = .none
         tableView.delegate = self
@@ -77,6 +84,5 @@ extension MBPersonalPage:UITableViewDataSource, UITableViewDelegate {
         }
         return cell!
     }
-
-
+    
 }

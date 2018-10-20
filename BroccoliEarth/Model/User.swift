@@ -13,14 +13,17 @@ struct User:Codable {
         case name
         case email
         case image
+        case level
     }
     let name:String?
     let email:String?
     let image:URL?
-    init(name:String?,email:String?,image:URL?) {
+    let level:Int?
+    init(name:String?,email:String?,image:URL?, level:Int?) {
         self.email = email
         self.name = name
         self.image = image
+        self.level = level
     }
 }
 extension User {
@@ -29,5 +32,6 @@ extension User {
         name = try? container.decode(String.self, forKey: .name)
         email = try? container.decode(String.self, forKey: .email)
         image = try? container.decode(URL.self, forKey: .image)
+        level = try? container.decode(Int.self, forKey: .level)
     }
 }

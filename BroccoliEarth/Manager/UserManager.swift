@@ -49,7 +49,7 @@ class UserManager {
     }
     private func getUserProfile(_ completionHandler:@escaping (User?)->Void){
         loginClient.login { [weak self] (result) in
-            let user = User(name: result?.name, email: result?.middleName, image: result?.imageURL(for: FBSDKProfilePictureMode.square, size: CGSize(width: 100, height: 100)))
+            let user = User(name: result?.name, email: result?.middleName, image: result?.imageURL(for: FBSDKProfilePictureMode.square, size: CGSize(width: 100, height: 100)), level: 1)
             self?.user = user
             completionHandler(user)
         }

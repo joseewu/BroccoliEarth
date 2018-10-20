@@ -20,6 +20,8 @@ class ButtonTableViewCell: UITableViewCell {
 
     }
     private func renderUI() {
+        self.backgroundColor = UIColor.clear
+        self.selectionStyle = .none
         confirmButton.layer.cornerRadius = 4
         confirmButton.clipsToBounds = true
     }

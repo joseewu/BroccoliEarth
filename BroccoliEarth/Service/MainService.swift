@@ -32,7 +32,7 @@ class MainService {
     public func getNumberOfReports(at:CLLocationCoordinate2D) {
 
     }
-    public func sendMyLocation(at:CLLocationCoordinate2D, completionHandler:@escaping (([MBReport]?) -> Void)){
+    public func sendMyLocation(at:CLLocationCoordinate2D, completionHandler:@escaping ((ArrayDataTransform<MBReport>?) -> Void)){
         let parameters = ["latitude":Double(at.latitude),"longitude":Double(at.longitude)]
         Alamofire.request(MBDomain.reports.name, method: .post, parameters: parameters).responseData(completionHandler: { (data) in
             guard let pureData = data.data else {
@@ -40,12 +40,15 @@ class MainService {
                 return}
             do {
                 let decoder = JSONDecoder.init()
-                let resutlt = try decoder.decode([MBReport].self, from: pureData)
+                let resutlt = try decoder.decode(ArrayDataTransform<MBReport>.self, from: pureData)
                 completionHandler(resutlt)
             } catch {
                 completionHandler(nil)
             }
         })
+    }
+    public func getImg() {
+        return
     }
     public func sendReport(at:CLLocationCoordinate2D) {
 

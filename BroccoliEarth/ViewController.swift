@@ -14,6 +14,10 @@ import CoreLocation
 import Floaty
 import SDWebImage
 
+struct ShowReport {
+    let img:UIImage?
+    let location:CLLocationCoordinate2D
+}
 class ViewController: UIViewController, ARSCNViewDelegate {
 
     @IBOutlet var sceneView: ARSCNView!
@@ -27,13 +31,18 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     @IBOutlet weak var addScene: UIButton!
     var testLocation:CLLocationCoordinate2D?
     private let client:MainService = MainService()
+    let configuration = ARWorldTrackingConfiguration()
+    private var reportImgs:[UIImage?] = [UIImage?]() {
+        didSet {
+
+        }
+    }
 
     private let userManager:UserManager = UserManager.shared
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         navigationController?.navigationBar.isHidden = true
         // Create a session configuration
-        let configuration = ARWorldTrackingConfiguration()
         // Run the view's session
         sceneView.session.run(configuration)
     }
@@ -49,8 +58,6 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        let locManager = CLLocationManager()
-        locManager.requestWhenInUseAuthorization()
         // Set the view's delegate
         sceneView.delegate = self
         // Show statistics such as fps and timing information
@@ -74,11 +81,16 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         userManager.login()
         renderUi()
         var locationsss:[CLLocationCoordinate2D] = [CLLocationCoordinate2D]()
-        let coordinate1 = transform(CLLocationDegrees(exactly: Float(25.0265)), CLLocationDegrees(exactly: Float(121.526454)))
+        let coordinate1 = transform(CLLocationDegrees(exactly: Float(25.026177)), CLLocationDegrees(exactly: Float(121.52656)))
         locationsss.append(coordinate1)
-        renderLocationNode(locationsss)
-
-        //25.026516, 121.526454
+        //renderLocationNode(locationsss)
+        let location = CLLocation(coordinate: coordinate1, altitude: 10)
+        let image = UIImage(named: "mosquitoPlant")!
+        let annotationNode = LocationAnnotationNode(location: location, image: image)
+        sceneLocationView.addLocationNodeWithConfirmedLocation(locationNode: annotationNode)
+        //25.026176, 121.526531
+    }
+    private func addAllImage() {
 
     }
     private func transform(_ lati:CLLocationDegrees?, _ long:CLLocationDegrees?) -> CLLocationCoordinate2D {
@@ -90,8 +102,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     private func renderLocationNode(_ locations:[CLLocationCoordinate2D]) {
         let locationNode = LocationNode.render(locations: locations)
         for node in locationNode {
-            //sceneLocationView.addLocationNodeWithConfirmedLocation(locationNode: node)
-            sceneLocationView.updatePositionAndScaleOfLocationNode(locationNode: node)
+            sceneLocationView.addLocationNodeWithConfirmedLocation(locationNode: node)
         }
     }
     private func renderUi() {
@@ -114,6 +125,18 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         let storyboard:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         if let vc:ReportViewController = storyboard.instantiateViewController(withIdentifier: "ReportViewController") as? ReportViewController {
             navigationController?.pushViewController(vc, animated: true)
+        }
+    }
+    private func getAllImages(_ report:MBReport?) {
+        var reports:[ShowReport] = [ShowReport]()
+        guard let url = report?.url else {
+            return
+        }
+        let imgUrl = URL(string: url)
+        UIImageView().sd_setImage(with: imgUrl) { (img, _, _, _) in
+            let coordinate1 = self.transform(CLLocationDegrees(exactly: Float(report?.latitude ?? 0)), CLLocationDegrees(exactly: Float(report?.longitude ?? 0)))
+            let item = ShowReport(img: img, location: coordinate1)
+            reports.append(item)
         }
     }
     private func showReportPage() {
@@ -141,18 +164,10 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             return
         }
         currentLocation = location
-//        let coordinate = CLLocationCoordinate2D(latitude: location.latitude + 0.02, longitude: location.longitude + 0.00001)
-//        let location = CLLocation(coordinate: coordinate, altitude: 10)
-//        let image = UIImage(named: "pin")!
-//
-//        let annotationNode = LocationAnnotationNode(location: location, image: image)
-//        sceneLocationView.addLocationNodeWithConfirmedLocation(locationNode: annotationNode)
     }
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        
-        // Pause the view's session
         sceneView.session.pause()
     }
     override func viewDidLayoutSubviews() {
@@ -184,15 +199,15 @@ extension ViewController:SceneLocationViewDelegate {
     }
     
     func sceneLocationViewDidRemoveSceneLocationEstimate(sceneLocationView: SceneLocationView, position: SCNVector3, location: CLLocation) {
-        
+
     }
     
     func sceneLocationViewDidConfirmLocationOfNode(sceneLocationView: SceneLocationView, node: LocationNode) {
-        
+
     }
     
     func sceneLocationViewDidSetupSceneNode(sceneLocationView: SceneLocationView, sceneNode: SCNNode) {
-        
+
     }
     
     func sceneLocationViewDidUpdateLocationAndScaleOfLocationNode(sceneLocationView: SceneLocationView, locationNode: LocationNode) {
@@ -200,9 +215,5 @@ extension ViewController:SceneLocationViewDelegate {
     }
     
     
-}
-extension  CGFloat{
-    var degreesToRadians:CGFloat { return CGFloat(self) * .pi/180}
-
 }
 

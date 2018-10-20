@@ -96,7 +96,6 @@ extension MBPhotoViewController:AVCapturePhotoCaptureDelegate {
             showImag.contentMode = .scaleAspectFill
             showImag.clipsToBounds = true
             showReportPage(resizeImag)
-            //compress data image?.jpegData(compressionQuality: 0.75)
         }
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

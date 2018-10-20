@@ -35,3 +35,4 @@ extension User {
         level = try? container.decode(Int.self, forKey: .level)
     }
 }
+//{"id":16,"userId":1,"url":"20181020174830_ScreenShot2018-10-20at23.29.34.png","latitude":25.084901,"longitude":121.603997,"created_at":"2018-10-20 17:48:30","updated_at":null,"type":"outdoor","description":null}

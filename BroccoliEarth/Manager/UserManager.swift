@@ -8,6 +8,7 @@
 
 import Foundation
 import FBSDKLoginKit
+import CoreLocation
 
 class UserManager {
     static var shared: UserManager = {
@@ -22,8 +23,13 @@ class UserManager {
     }()
     private init(client:LoginClient) {
         loginClient = client
+        locationManager = CLLocationManager()
+        locationManager.requestWhenInUseAuthorization()
+
+
     }
     private var loginClient:LoginClient
+    private var locationManager:CLLocationManager
     public var user:User? {
         didSet {
             if let user = user {

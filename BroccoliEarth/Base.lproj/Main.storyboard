@@ -95,7 +95,6 @@
                         <outlet property="profile" destination="1ww-Vd-kGU" id="WWz-YG-bKx"/>
                         <outlet property="progressView" destination="VpL-9i-LuZ" id="0ST-tK-j3Y"/>
                         <outlet property="sceneView" destination="BrB-h1-WRS" id="pDn-nn-FTB"/>
-                        <segue destination="s0j-oc-hUR" kind="show" identifier="showReportPage" id="SRV-Jn-otN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
@@ -105,20 +104,60 @@
         <!--Report View Controller-->
         <scene sceneID="zi2-3k-jcT">
             <objects>
-                <viewController id="s0j-oc-hUR" customClass="ReportViewController" customModule="BroccoliEarth" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ReportViewController" id="s0j-oc-hUR" customClass="ReportViewController" customModule="BroccoliEarth" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="q6e-Tq-qSm">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bit_mosquito" translatesAutoresizingMaskIntoConstraints="NO" id="FjF-md-KXW">
+                                <rect key="frame" x="37.5" y="50" width="300" height="300"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="FjF-md-KXW" secondAttribute="height" multiplier="1:1" id="THU-2f-ETa"/>
+                                    <constraint firstAttribute="width" constant="300" id="ug9-qg-rBr"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XUd-uV-drI">
+                                <rect key="frame" x="87.5" y="450" width="200" height="40"/>
+                                <color key="backgroundColor" red="1" green="0.31372549020000001" blue="0.45098039220000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="H2T-yR-wjb"/>
+                                    <constraint firstAttribute="height" constant="40" id="oed-jX-DTH"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <state key="normal" title="回報">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="被咬了嗎？！回報累積經驗值！" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BhN-ZZ-XOC">
+                                <rect key="frame" x="37.5" y="390" width="300" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="FjF-md-KXW" firstAttribute="centerX" secondItem="pVR-74-vUD" secondAttribute="centerX" id="4CW-zh-Pyy"/>
+                            <constraint firstItem="BhN-ZZ-XOC" firstAttribute="leading" secondItem="FjF-md-KXW" secondAttribute="leading" id="57E-yM-IzP"/>
+                            <constraint firstItem="FjF-md-KXW" firstAttribute="top" secondItem="pVR-74-vUD" secondAttribute="top" constant="30" id="Amr-J6-JSg"/>
+                            <constraint firstItem="XUd-uV-drI" firstAttribute="centerX" secondItem="pVR-74-vUD" secondAttribute="centerX" id="D6B-DI-B8c"/>
+                            <constraint firstItem="BhN-ZZ-XOC" firstAttribute="top" secondItem="FjF-md-KXW" secondAttribute="bottom" constant="40" id="F3V-gb-unQ"/>
+                            <constraint firstItem="XUd-uV-drI" firstAttribute="top" secondItem="FjF-md-KXW" secondAttribute="bottom" constant="100" id="Yu4-Rm-OuV"/>
+                            <constraint firstItem="BhN-ZZ-XOC" firstAttribute="centerX" secondItem="XUd-uV-drI" secondAttribute="centerX" id="rPE-OD-Ttg"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="pVR-74-vUD"/>
                     </view>
+                    <connections>
+                        <outlet property="reportBut" destination="XUd-uV-drI" id="1Mn-xV-Ewk"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QG0-pt-BB3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="743" y="25"/>
+            <point key="canvasLocation" x="182" y="133"/>
         </scene>
     </scenes>
     <resources>
+        <image name="bit_mosquito" width="625" height="625"/>
         <image name="spaceman" width="102.40000152587891" height="102.40000152587891"/>
     </resources>
     <color key="tintColor" red="1" green="0.31372549020000001" blue="0.45098039220000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

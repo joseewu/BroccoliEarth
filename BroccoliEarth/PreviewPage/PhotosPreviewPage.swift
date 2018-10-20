@@ -30,10 +30,10 @@ extension PhotosPreviewPage:UITableViewDelegate,UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ReportImageCell", for: indexPath) as? ReportImageCell
         let count = indexPath.row + 1
-        guard let imgURL = URL(string: MBDomain.reportImg(count: count).name) else {return cell!}
-        cell?.reportImg?.sd_setImage(with: imgURL, completed: { (_, _, _, _) in
-            
-        })
+//        guard let imgURL = URL(string: MBDomain.reportImg(count: count).name) else {return cell!}
+//        cell?.reportImg?.sd_setImage(with: imgURL, completed: { (_, _, _, _) in
+//
+//        })
         return cell!
     }
 

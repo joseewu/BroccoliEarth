@@ -11,13 +11,15 @@ import UIKit
 class ButtonTableViewCell: UITableViewCell {
 
     @IBOutlet weak var confirmButton: UIButton!
+    var cellType:MBPersonalPageCellType = .myReports
+    var didTapBut:((MBPersonalPageCellType) -> Void)?
     override func awakeFromNib() {
         super.awakeFromNib()
         renderUI()
         // Initialization code
     }
     @IBAction func didTap(_ sender: Any) {
-
+        didTapBut?(cellType)
     }
     private func renderUI() {
         self.backgroundColor = UIColor.clear

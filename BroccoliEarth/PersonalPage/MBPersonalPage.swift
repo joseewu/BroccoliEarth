@@ -9,20 +9,20 @@
 import UIKit
 import SDWebImage
 enum MBPersonalPageCellType {
-    case map
     case logout
     case question
     case myReports
+    case aboutUs
     var title:String {
         switch self {
-        case .map:
-            return "Mosquito Map"
         case .logout:
             return "Logout"
         case .question:
             return "Mosquito Q&A"
         case .myReports:
             return "My reports"
+        case .aboutUs:
+            return "About Us(Planet Broccoli)"
         }
     }
 }
@@ -36,7 +36,7 @@ class MBPersonalPage: BaseViewController {
     @IBOutlet weak var name: UILabel!
 
     private let user:User? = UserManager.shared.user
-    private let personalPageCellType:[MBPersonalPageCellType] = [.map, .myReports,.question,.logout]
+    private let personalPageCellType:[MBPersonalPageCellType] = [.myReports,.question,.logout,.aboutUs]
     override func viewDidLoad() {
         super.viewDidLoad()
         renderUi()
@@ -72,15 +72,20 @@ extension MBPersonalPage:UITableViewDataSource, UITableViewDelegate {
         let type:MBPersonalPageCellType = personalPageCellType[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "ButtonTableViewCell", for: indexPath) as? ButtonTableViewCell
         cell?.confirmButton.setTitle(type.title, for: .normal)
-        switch type {
-        case .map:
-            break
-        case .logout:
-            break
-        case .question:
-            break
-        case .myReports:
-            break
+        if type == .aboutUs {
+            cell?.confirmButton.backgroundColor = UIColor("#016616")
+        }
+        cell?.didTapBut = { cellType in
+            switch cellType {
+            case .logout:
+                break
+            case .question:
+                break
+            case .myReports:
+                break
+            case .aboutUs:
+                break
+            }
         }
         return cell!
     }

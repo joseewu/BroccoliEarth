@@ -19,6 +19,7 @@ class MBLoginViewController: BaseViewController {
     }
 
     private func renderUi() {
+        loginButton.readPermissions = ["public_profile","email"]
         loginButton.delegate = self
     }
 

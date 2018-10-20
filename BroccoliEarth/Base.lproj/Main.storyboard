@@ -59,6 +59,16 @@
                                     <constraint firstAttribute="width" constant="50" id="Zlx-2Q-Mjx"/>
                                 </constraints>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9kW-Fb-kb1">
+                                <rect key="frame" x="112.5" y="496" width="150" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="Dt8-IL-bbs"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="addNodeRandomlu:" destination="BV1-FR-VrT" eventType="touchUpInside" id="oHK-cR-BWd"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -69,7 +79,9 @@
                             <constraint firstItem="VpL-9i-LuZ" firstAttribute="bottom" secondItem="UDO-xa-V2X" secondAttribute="top" constant="50" id="VPA-OE-pRC"/>
                             <constraint firstItem="BrB-h1-WRS" firstAttribute="bottom" secondItem="fQZ-KI-GVf" secondAttribute="bottom" id="VpT-BR-CcM"/>
                             <constraint firstItem="BrB-h1-WRS" firstAttribute="trailing" secondItem="fQZ-KI-GVf" secondAttribute="trailing" id="XyZ-9z-H8e"/>
+                            <constraint firstItem="9kW-Fb-kb1" firstAttribute="centerX" secondItem="fQZ-KI-GVf" secondAttribute="centerX" id="csK-JB-PzW"/>
                             <constraint firstItem="BrB-h1-WRS" firstAttribute="top" secondItem="U0K-SW-4ec" secondAttribute="top" id="rJc-2c-zQA"/>
+                            <constraint firstItem="fQZ-KI-GVf" firstAttribute="bottom" secondItem="9kW-Fb-kb1" secondAttribute="bottom" constant="141" id="tuu-wN-H2c"/>
                             <constraint firstItem="fQZ-KI-GVf" firstAttribute="trailing" secondItem="1ww-Vd-kGU" secondAttribute="trailing" constant="40" id="u0t-Rg-2GD"/>
                             <constraint firstItem="UDO-xa-V2X" firstAttribute="top" secondItem="fQZ-KI-GVf" secondAttribute="top" constant="20" id="xj3-By-l12"/>
                             <constraint firstItem="1ww-Vd-kGU" firstAttribute="top" secondItem="fQZ-KI-GVf" secondAttribute="top" constant="20" id="xzK-hw-2z4"/>
@@ -78,6 +90,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="Tco-hA-o65"/>
                     <connections>
+                        <outlet property="addScene" destination="9kW-Fb-kb1" id="bgM-nu-P1H"/>
                         <outlet property="nameLabel" destination="UDO-xa-V2X" id="Izh-Qy-ijg"/>
                         <outlet property="profile" destination="1ww-Vd-kGU" id="WWz-YG-bKx"/>
                         <outlet property="progressView" destination="VpL-9i-LuZ" id="0ST-tK-j3Y"/>

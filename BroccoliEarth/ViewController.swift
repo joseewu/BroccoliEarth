@@ -24,6 +24,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var progressView: UIProgressView!
     @IBOutlet weak var profile: UIImageView!
+    @IBOutlet weak var addScene: UIButton!
 
     private let userManager:UserManager = UserManager.shared
     override func viewDidAppear(_ animated: Bool) {
@@ -33,6 +34,17 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         let configuration = ARWorldTrackingConfiguration()
         // Run the view's session
         sceneView.session.run(configuration)
+    }
+
+    @IBAction func addNodeRandomlu(_ sender: Any) {
+
+        let scene:SCNScene = SCNScene(named: "art.scnassets/Mosquito_Color.scn")!
+
+        let mosquitoNode = scene.rootNode.childNode(withName: "Mosquito", recursively: false)!
+        mosquitoNode.rotation = SCNVector4Make(0, 1, 0, .pi / 10)
+        mosquitoNode.scale = SCNVector3Make(0.1, 0.1, 0.1)
+    sceneLocationView.scene.rootNode.addChildNode(mosquitoNode)
+        print("count: \(sceneLocationView.scene.rootNode.childNodes.count)")
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,12 +63,12 @@ class ViewController: UIViewController, ARSCNViewDelegate {
                 print(error?.localizedDescription ?? "an error occur")
             }
         }
-        let scene = SCNScene(named: "art.scnassets/Mosquito_Color.scn")!
+        let scene:SCNScene = SCNScene(named: "art.scnassets/Mosquito_Color.scn")!
         // Set the scene to the view
         sceneView.scene = scene
         sceneLocationView.run()
         view.addSubview(sceneLocationView)
-        view.addSubview(sceneLocationView)
+        view.addSubview(addScene)
         userManager.login()
         renderUi()
     }
@@ -147,4 +159,10 @@ extension ViewController:SceneLocationViewDelegate {
     }
     
     
+}
+extension  CGFloat{
+
+    /// Converts Degrees To Radians
+    var degreesToRadians:CGFloat { return CGFloat(self) * .pi/180}
+
 }

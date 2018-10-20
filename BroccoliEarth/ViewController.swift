@@ -44,11 +44,20 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         sceneView.showsStatistics = false
         // Create a new scene
         sceneLocationView.locationDelegate = self
+        userManager.update = { [weak self] user in
+            self?.nameLabel.text = user.name
+            self?.progressView.progress = 0.5
+            self?.profile.sd_setImage(with: user.image) { (image, error, cache, url) in
+                print(error?.localizedDescription ?? "an error occur")
+            }
+        }
         let scene = SCNScene(named: "art.scnassets/Mosquito_Color.scn")!
         // Set the scene to the view
         sceneView.scene = scene
         sceneLocationView.run()
         view.addSubview(sceneLocationView)
+        view.addSubview(sceneLocationView)
+        userManager.login()
         renderUi()
     }
     private func renderUi() {
@@ -63,13 +72,6 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         profile.layer.cornerRadius = profile.frame.size.width/2
         profile.clipsToBounds = true
         profile.contentMode = .scaleAspectFill
-        userManager.update = { [weak self] user in
-            self?.nameLabel.text = user.name
-            self?.progressView.progress = 0.5
-            self?.profile.sd_setImage(with: user.image) { (image, error, cache, url) in
-                print(error?.localizedDescription ?? "an error occur")
-            }
-        }
     }
     private func showReportPage() {
         let storyboard:UIStoryboard = UIStoryboard(name: "ReportPages", bundle: nil)
@@ -89,9 +91,8 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         let coordinate = CLLocationCoordinate2D(latitude: location.latitude + 0.02, longitude: location.longitude + 0.00001)
         let location = CLLocation(coordinate: coordinate, altitude: 300)
         let image = UIImage(named: "pin")!
-        
+
         let annotationNode = LocationAnnotationNode(location: location, image: image)
-        
         sceneLocationView.addLocationNodeWithConfirmedLocation(locationNode: annotationNode)
         
     }

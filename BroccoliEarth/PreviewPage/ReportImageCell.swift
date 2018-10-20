@@ -1,29 +1,27 @@
 //
-//  ButtonTableViewCell.swift
+//  ReportImageCell.swift
 //  BroccoliEarth
 //
-//  Created by joseewu on 2018/10/18.
+//  Created by joseewu on 2018/10/20.
 //  Copyright © 2018 com.js. All rights reserved.
 //
 
 import UIKit
 
-class ButtonTableViewCell: UITableViewCell {
+class ReportImageCell: UITableViewCell {
 
-    @IBOutlet weak var confirmButton: UIButton!
+    @IBOutlet weak var reportImg: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
+        reportImg.contentMode = .scaleAspectFill
+        reportImg.clipsToBounds = true
         // Initialization code
     }
-    @IBAction func didTap(_ sender: Any) {
 
-    }
-    private func renderUI() {
-
-    }
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
+        // Configure the view for the selected state
     }
     
 }

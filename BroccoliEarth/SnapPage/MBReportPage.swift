@@ -18,6 +18,8 @@ class MBReportPage: BaseViewController {
     @IBOutlet weak var reportImg: UIImageView!
     @IBOutlet weak var reportBut: UIButton!
     @IBOutlet weak var typeSegment: UISegmentedControl!
+    @IBOutlet weak var informationInput: UITextField!
+
     @IBAction func didTapReport(_ sender: Any) {
         //TODO: send report imformation
 
@@ -38,6 +40,7 @@ class MBReportPage: BaseViewController {
         reportImg.clipsToBounds = true
         reportBut.layer.cornerRadius = 7
         reportBut.clipsToBounds = true
+        informationInput.delegate = self
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -48,5 +51,13 @@ class MBReportPage: BaseViewController {
     }
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
+    }
+}
+extension MBReportPage:UITextFieldDelegate {
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        touchView.isHidden = true
+    }
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        touchView.isHidden = false
     }
 }

@@ -129,8 +129,8 @@
                                     <constraint firstAttribute="width" secondItem="056-4T-R9I" secondAttribute="height" multiplier="25:27" id="iUs-ZH-2Fz"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="地點" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j2z-3U-lzH">
-                                <rect key="frame" x="47.5" y="479.5" width="35" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="地點描述" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j2z-3U-lzH">
+                                <rect key="frame" x="47.5" y="474.5" width="69.5" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -141,6 +141,12 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="(填入蚊子種類、水盆類型等)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="r3k-3x-zcJ">
+                                <rect key="frame" x="47.5" y="505.5" width="280" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="bfE-Ak-SOv">
                                 <rect key="frame" x="47.5" y="419.5" width="280" height="31"/>
                                 <color key="backgroundColor" red="0.023529411760000001" green="0.70196078429999997" blue="0.91372549020000005" alpha="1" colorSpace="calibratedRGB"/>
@@ -156,15 +162,6 @@
                                     <action selector="didSwitchType:" destination="Gkn-We-S7d" eventType="valueChanged" id="6Dx-89-Uic"/>
                                 </connections>
                             </segmentedControl>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2bg-wP-Lth">
-                                <rect key="frame" x="47.5" y="510.5" width="287.5" height="20.5"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="50" id="oqN-b1-Szf"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tft-FB-qai">
                                 <rect key="frame" x="87.5" y="587" width="200" height="40"/>
                                 <color key="backgroundColor" red="1" green="0.31372549019607843" blue="0.45098039215686275" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -186,23 +183,25 @@
                             <constraint firstItem="U8F-ce-RMg" firstAttribute="trailing" secondItem="056-4T-R9I" secondAttribute="trailing" constant="40" id="0aq-aO-VNl"/>
                             <constraint firstItem="tft-FB-qai" firstAttribute="centerX" secondItem="056-4T-R9I" secondAttribute="centerX" id="0fS-AX-L7H"/>
                             <constraint firstItem="bfE-Ak-SOv" firstAttribute="top" secondItem="LOF-fN-Lsu" secondAttribute="bottom" constant="10" id="4Ub-us-1cV"/>
+                            <constraint firstItem="r3k-3x-zcJ" firstAttribute="top" secondItem="j2z-3U-lzH" secondAttribute="bottom" constant="10" id="CVZ-vx-6y8"/>
                             <constraint firstItem="056-4T-R9I" firstAttribute="leading" secondItem="U8F-ce-RMg" secondAttribute="leading" constant="40" id="DhZ-3d-I7r"/>
                             <constraint firstItem="U8F-ce-RMg" firstAttribute="bottom" secondItem="tft-FB-qai" secondAttribute="bottom" constant="40" id="HpG-c3-8O3"/>
+                            <constraint firstItem="r3k-3x-zcJ" firstAttribute="trailing" secondItem="bfE-Ak-SOv" secondAttribute="trailing" id="KP3-9L-Bqb"/>
                             <constraint firstItem="LOF-fN-Lsu" firstAttribute="trailing" secondItem="U8F-ce-RMg" secondAttribute="centerX" constant="-105" id="Kcr-Mw-v77"/>
                             <constraint firstItem="bfE-Ak-SOv" firstAttribute="centerX" secondItem="056-4T-R9I" secondAttribute="centerX" id="SVN-4i-Xo7"/>
                             <constraint firstItem="LOF-fN-Lsu" firstAttribute="top" secondItem="056-4T-R9I" secondAttribute="bottom" constant="30" id="TLy-sg-zoh"/>
-                            <constraint firstItem="j2z-3U-lzH" firstAttribute="top" secondItem="bfE-Ak-SOv" secondAttribute="bottom" constant="30" id="U2l-W4-rty"/>
-                            <constraint firstItem="2bg-wP-Lth" firstAttribute="leading" secondItem="j2z-3U-lzH" secondAttribute="leading" id="VA1-FP-2mH"/>
+                            <constraint firstItem="j2z-3U-lzH" firstAttribute="top" secondItem="bfE-Ak-SOv" secondAttribute="bottom" constant="25" id="U2l-W4-rty"/>
                             <constraint firstItem="056-4T-R9I" firstAttribute="top" secondItem="U8F-ce-RMg" secondAttribute="top" constant="20" id="WHT-RE-QPk"/>
+                            <constraint firstItem="r3k-3x-zcJ" firstAttribute="leading" secondItem="bfE-Ak-SOv" secondAttribute="leading" id="bqg-Ca-aMK"/>
                             <constraint firstItem="bfE-Ak-SOv" firstAttribute="leading" secondItem="LOF-fN-Lsu" secondAttribute="leading" id="j9D-90-kuH"/>
                             <constraint firstItem="j2z-3U-lzH" firstAttribute="leading" secondItem="LOF-fN-Lsu" secondAttribute="leading" id="oQT-rS-fUI"/>
-                            <constraint firstItem="2bg-wP-Lth" firstAttribute="trailing" secondItem="056-4T-R9I" secondAttribute="trailing" id="pam-iU-L8k"/>
-                            <constraint firstItem="2bg-wP-Lth" firstAttribute="top" secondItem="j2z-3U-lzH" secondAttribute="bottom" constant="10" id="rQg-xt-BQl"/>
                             <constraint firstItem="056-4T-R9I" firstAttribute="centerX" secondItem="U8F-ce-RMg" secondAttribute="centerX" id="vtA-oc-qcY"/>
+                            <constraint firstItem="r3k-3x-zcJ" firstAttribute="centerX" secondItem="056-4T-R9I" secondAttribute="centerX" id="yvP-sz-wuR"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="U8F-ce-RMg"/>
                     </view>
                     <connections>
+                        <outlet property="informationInput" destination="r3k-3x-zcJ" id="Kpb-oX-Rqv"/>
                         <outlet property="reportBut" destination="tft-FB-qai" id="SxE-LJ-XIx"/>
                         <outlet property="reportImg" destination="056-4T-R9I" id="MyQ-Gj-D0c"/>
                         <outlet property="typeSegment" destination="bfE-Ak-SOv" id="TFD-QH-DOa"/>

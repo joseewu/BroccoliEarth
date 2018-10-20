@@ -30,6 +30,8 @@
 		EB47666221779DFA001FD03A /* UIColor+HexString.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB47666021779DFA001FD03A /* UIColor+HexString.swift */; };
 		EB4766642177A068001FD03A /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB4766632177A068001FD03A /* Login.storyboard */; };
 		EB7D801421762B3B00208461 /* MBLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB7D801221762B3B00208461 /* MBLoginViewController.swift */; };
+		EB91CC73217AC74E0008787F /* ReportImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB91CC71217AC74E0008787F /* ReportImageCell.swift */; };
+		EB91CC74217AC74E0008787F /* ReportImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB91CC72217AC74E0008787F /* ReportImageCell.xib */; };
 		EBC3F12A2178BFC600524467 /* ButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBC3F1282178BFC600524467 /* ButtonTableViewCell.swift */; };
 		EBC3F12B2178BFC600524467 /* ButtonTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EBC3F1292178BFC600524467 /* ButtonTableViewCell.xib */; };
 		EBDCDAE9217591BF00963A2B /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDCDAE8217591BF00963A2B /* MainViewModel.swift */; };
@@ -98,6 +100,8 @@
 		EB47666021779DFA001FD03A /* UIColor+HexString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+HexString.swift"; sourceTree = "<group>"; };
 		EB4766632177A068001FD03A /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		EB7D801221762B3B00208461 /* MBLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MBLoginViewController.swift; sourceTree = "<group>"; };
+		EB91CC71217AC74E0008787F /* ReportImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportImageCell.swift; sourceTree = "<group>"; };
+		EB91CC72217AC74E0008787F /* ReportImageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReportImageCell.xib; sourceTree = "<group>"; };
 		EBC3F1282178BFC600524467 /* ButtonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonTableViewCell.swift; sourceTree = "<group>"; };
 		EBC3F1292178BFC600524467 /* ButtonTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ButtonTableViewCell.xib; sourceTree = "<group>"; };
 		EBDCDAE8217591BF00963A2B /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
@@ -201,10 +205,8 @@
 				EB7D801621762B4000208461 /* Login */,
 				EB11A3B921708CDC00AF6C0C /* ViewController.swift */,
 				EBDCDAEC217597D700963A2B /* ReportViewController.swift */,
-				EB4766542177977F001FD03A /* MBPersonalPage.swift */,
-				EB4766552177977F001FD03A /* MBPersonalPage.xib */,
+				EB91CC75217AD27F0008787F /* PersonalPage */,
 				EBFF28EB217A008C0044B1AE /* Manager */,
-				EBC3F12C2178BFD400524467 /* Cells */,
 				EBDCDAE8217591BF00963A2B /* MainViewModel.swift */,
 				EB1D38BC2178A21D009CE83E /* PreviewPage */,
 				EBDCDAF52175CD7600963A2B /* Service */,
@@ -239,6 +241,8 @@
 		EB1D38BC2178A21D009CE83E /* PreviewPage */ = {
 			isa = PBXGroup;
 			children = (
+				EB91CC71217AC74E0008787F /* ReportImageCell.swift */,
+				EB91CC72217AC74E0008787F /* ReportImageCell.xib */,
 				EB1D38B72178A1DC009CE83E /* PhotosPreviewPage.swift */,
 				EB1D38B82178A1DC009CE83E /* PhotosPreviewPage.xib */,
 			);
@@ -275,6 +279,16 @@
 				EB4766632177A068001FD03A /* Login.storyboard */,
 			);
 			path = Login;
+			sourceTree = "<group>";
+		};
+		EB91CC75217AD27F0008787F /* PersonalPage */ = {
+			isa = PBXGroup;
+			children = (
+				EB4766542177977F001FD03A /* MBPersonalPage.swift */,
+				EB4766552177977F001FD03A /* MBPersonalPage.xib */,
+				EBC3F12C2178BFD400524467 /* Cells */,
+			);
+			path = PersonalPage;
 			sourceTree = "<group>";
 		};
 		EBC3F12C2178BFD400524467 /* Cells */ = {
@@ -432,6 +446,7 @@
 				EB4766572177977F001FD03A /* MBPersonalPage.xib in Resources */,
 				EBFF28E621796B030044B1AE /* ReportPages.storyboard in Resources */,
 				EB11A3C221708CDE00AF6C0C /* LaunchScreen.storyboard in Resources */,
+				EB91CC74217AC74E0008787F /* ReportImageCell.xib in Resources */,
 				EB11A3BF21708CDE00AF6C0C /* Assets.xcassets in Resources */,
 				EBC3F12B2178BFC600524467 /* ButtonTableViewCell.xib in Resources */,
 				EBDCDAF32175CD6100963A2B /* MBPhotoViewController.xib in Resources */,
@@ -584,6 +599,7 @@
 				EB47665C21779DDB001FD03A /* ParametersBuilder.swift in Sources */,
 				EBFF28E22179513F0044B1AE /* UserManager.swift in Sources */,
 				EBFF28ED217A16110044B1AE /* User.swift in Sources */,
+				EB91CC73217AC74E0008787F /* ReportImageCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -9,7 +9,18 @@
 import Foundation
 import CoreLocation
 import Alamofire
-
+enum MBDomain {
+    case reportImg(count:Int)
+    case staticalInfo
+    var name:String {
+        switch self {
+        case .reportImg(let count):
+            return "https://s3-ap-northeast-1.amazonaws.com/nasahackerthon/nasa\(count).jpg"
+        default:
+            return ""
+        }
+    }
+}
 class MainService {
     init() {
 

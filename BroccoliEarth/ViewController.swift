@@ -29,6 +29,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         didSet {
             userManager.location = currentLocation
             getLocationStatus()
+            getMyLocationReport()
         }
     }
     @IBOutlet weak var nameLabel: UILabel!
@@ -159,6 +160,10 @@ class ViewController: UIViewController, ARSCNViewDelegate {
                 let coordinate1 = self.transform(CLLocationDegrees(exactly: Float(item.latitude ?? 0)), CLLocationDegrees(exactly: Float(item.longitude ?? 0)))
                 let showItem = ShowReport(img: img, location: coordinate1, comment: item.description)
                 reports.append(showItem)
+                let locations = reports.map({ (item) -> CLLocationCoordinate2D in
+                    return item.location
+                })
+                self.renderLocationNode(locations)
             }
         }
     }
@@ -217,7 +222,6 @@ extension ViewController:SceneLocationViewDelegate {
     func sceneLocationViewDidAddSceneLocationEstimate(sceneLocationView: SceneLocationView, position: SCNVector3, location: CLLocation) {
         if let current = sceneLocationView.currentLocation()?.coordinate {
             addNode(at: current)
-            getMyLocationReport()
         }
     }
     

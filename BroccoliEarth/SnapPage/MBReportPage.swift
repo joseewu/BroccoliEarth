@@ -27,7 +27,9 @@ class MBReportPage: BaseViewController {
         let report = ShowReport.init(img: showImage, location: coordinate1, comment: informationInput.text)
         client.sendReportImage(report) { [weak self] (isFinished) in
             if isFinished {
-               self?.navigationController?.dismiss(animated: true, completion: nil)
+               self?.showAlert()
+            } else {
+                self?.showError()
             }
         }
 
@@ -59,6 +61,24 @@ class MBReportPage: BaseViewController {
     }
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
+    }
+    private func showAlert() {
+        let alertController = UIAlertController(title: "回報成功", message: "經驗值+++", preferredStyle: .alert)
+        let action = UIAlertAction(title: "取得經驗值", style: .default) { [weak self] _ in
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.3, execute: {
+                self?.navigationController?.dismiss(animated: true, completion: nil)
+            })
+        }
+        alertController.addAction(action)
+        present(alertController, animated: true, completion: nil)
+    }
+    private func showError() {
+        let alertController = UIAlertController(title: "回報失敗", message: "請再次嘗試", preferredStyle: .alert)
+        let action = UIAlertAction(title: "我知道了", style: .cancel) { _ in
+            alertController.dismiss(animated: true, completion: nil)
+        }
+        alertController.addAction(action)
+        present(alertController, animated: true, completion: nil)
     }
 }
 extension MBReportPage:UITextFieldDelegate {

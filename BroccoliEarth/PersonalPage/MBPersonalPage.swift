@@ -47,7 +47,7 @@ class MBPersonalPage: BaseViewController {
         navigationController?.isNavigationBarHidden = false
     }
     private func renderUi() {
-        levelInfo.text = "Lv.\(user?.level ?? 1)"
+        levelInfo.text = "科技滅蚊的貢獻者"
         levelBG.layer.cornerRadius = levelBG.frame.size.width/2
         levelBG.clipsToBounds = true
         levelBG.sd_setImage(with: user?.image) { (_, _, _, _) in
@@ -62,6 +62,10 @@ class MBPersonalPage: BaseViewController {
         tableView.delegate = self
         tableView.dataSource = self
     }
+    private func showQAPage() {
+        let QA = Q_AViewController(nibName: "Q_AViewController", bundle: nil)
+        navigationController?.pushViewController(QA, animated: true)
+    }
 }
 extension MBPersonalPage:UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -72,15 +76,16 @@ extension MBPersonalPage:UITableViewDataSource, UITableViewDelegate {
         let type:MBPersonalPageCellType = personalPageCellType[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "ButtonTableViewCell", for: indexPath) as? ButtonTableViewCell
         cell?.confirmButton.setTitle(type.title, for: .normal)
+        cell?.cellType = type
         if type == .aboutUs {
             cell?.confirmButton.backgroundColor = UIColor("#016616")
         }
-        cell?.didTapBut = { cellType in
+        cell?.didTapBut = { [weak self] cellType in
             switch cellType {
             case .logout:
                 break
             case .question:
-                break
+                self?.showQAPage()
             case .myReports:
                 break
             case .aboutUs:

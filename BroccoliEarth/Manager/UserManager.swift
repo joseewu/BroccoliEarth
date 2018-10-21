@@ -33,6 +33,18 @@ class UserManager {
             }
         }
     }
+    public var userlevel:Float? {
+        let level = UserDefaults.standard.integer(forKey: "userLevel")
+        let new = Float(level)/50
+
+        return new
+    }
+    func upgrade(_ point:Int) {
+        let oldValue = UserDefaults.standard.integer(forKey: "userLevel")
+        let newValue = oldValue + point
+        UserDefaults.standard.set(newValue, forKey: "userLevel")
+        UserDefaults.standard.synchronize()
+    }
     public var update:((User) -> Void)?
     private var token:String? {
         return FBSDKAccessToken.current()?.tokenString

@@ -53,6 +53,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         // Create a session configuration
         // Run the view's session
         sceneView.session.run(configuration)
+        progressView.setProgress(Float(userManager.userlevel ?? 1), animated: true)
     }
 
     @IBAction func addNodeRandomlu(_ sender: Any) {
@@ -72,9 +73,9 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         sceneView.showsStatistics = false
         // Create a new scene
         sceneLocationView.locationDelegate = self
+        progressView.setProgress(Float(userManager.userlevel ?? 0), animated: true)
         userManager.update = { [weak self] user in
             self?.nameLabel.text = user.name
-            self?.progressView.progress = 0.5
             self?.profile.sd_setImage(with: user.image) { (image, error, cache, url) in
                 print(error?.localizedDescription ?? "an error occur")
             }

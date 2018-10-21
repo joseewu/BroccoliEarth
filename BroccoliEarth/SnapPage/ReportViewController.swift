@@ -30,6 +30,7 @@ class ReportViewController: BaseViewController {
     private func showAlert() {
         let alertController = UIAlertController(title: "回報成功", message: "經驗值+++", preferredStyle: .alert)
         let action = UIAlertAction(title: "取得經驗值", style: .default) { [weak self] _ in
+            UserManager.shared.upgrade(1)
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.3, execute: {
                 self?.navigationController?.popViewController(animated: true)
             })

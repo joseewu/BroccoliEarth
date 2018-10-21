@@ -24,7 +24,7 @@ class MBReportPage: BaseViewController {
     @IBAction func didTapReport(_ sender: Any) {
         //TODO: send report imformation
         let coordinate1 = CLLocationCoordinate2D(latitude: CLLocationDegrees(exactly: Float(25.026177)) ?? 0, longitude: CLLocationDegrees(exactly: Float(121.52656)) ?? 0)
-        let report = ShowReport.init(img: showImage, location: coordinate1)
+        let report = ShowReport.init(img: showImage, location: coordinate1, comment: informationInput.text)
         client.sendReportImage(report) { [weak self] (isFinished) in
             if isFinished {
                self?.navigationController?.dismiss(animated: true, completion: nil)

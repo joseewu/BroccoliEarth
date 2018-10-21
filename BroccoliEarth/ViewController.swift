@@ -17,6 +17,7 @@ import SDWebImage
 struct ShowReport {
     let img:UIImage?
     let location:CLLocationCoordinate2D
+    var comment:String?
 }
 class ViewController: UIViewController, ARSCNViewDelegate {
 
@@ -24,7 +25,11 @@ class ViewController: UIViewController, ARSCNViewDelegate {
 
     var floatButton:Floaty = Floaty(size: 65)
     var sceneLocationView = SceneLocationView()
-    var currentLocation:CLLocationCoordinate2D?
+    var currentLocation:CLLocationCoordinate2D? {
+        didSet {
+            userManager.location = currentLocation
+        }
+    }
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var progressView: UIProgressView!
     @IBOutlet weak var profile: UIImageView!
@@ -90,9 +95,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         sceneLocationView.addLocationNodeWithConfirmedLocation(locationNode: annotationNode)
         //25.026176, 121.526531
     }
-    private func addAllImage() {
 
-    }
     private func transform(_ lati:CLLocationDegrees?, _ long:CLLocationDegrees?) -> CLLocationCoordinate2D {
         guard let lati = lati, let long = long else {
             return CLLocationCoordinate2D(latitude: 0, longitude: 0)
@@ -127,16 +130,19 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             navigationController?.pushViewController(vc, animated: true)
         }
     }
-    private func getAllImages(_ report:MBReport?) {
+    private func getAllShowReport(_ report:[MBReport]?) {
+        guard let report = report else {return}
         var reports:[ShowReport] = [ShowReport]()
-        guard let url = report?.url else {
-            return
-        }
-        let imgUrl = URL(string: url)
-        UIImageView().sd_setImage(with: imgUrl) { (img, _, _, _) in
-            let coordinate1 = self.transform(CLLocationDegrees(exactly: Float(report?.latitude ?? 0)), CLLocationDegrees(exactly: Float(report?.longitude ?? 0)))
-            let item = ShowReport(img: img, location: coordinate1)
-            reports.append(item)
+        for item in report {
+            guard let url = item.url else {
+                return
+            }
+            let imgUrl = URL(string: url)
+            UIImageView().sd_setImage(with: imgUrl) { (img, _, _, _) in
+                let coordinate1 = self.transform(CLLocationDegrees(exactly: Float(item.latitude ?? 0)), CLLocationDegrees(exactly: Float(item.longitude ?? 0)))
+                let showItem = ShowReport(img: img, location: coordinate1, comment: item.description)
+                reports.append(showItem)
+            }
         }
     }
     private func showReportPage() {
@@ -153,9 +159,9 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         guard let currentLocation = currentLocation else {
             return
         }
-        client.sendMyLocation(at: currentLocation) { (result) in
+        client.sendMyLocation(at: currentLocation) { [weak self] (result) in
             guard let reports = result else {return}
-            print(reports)
+            self?.getAllShowReport(reports.data)
         }
     }
     //private func transform

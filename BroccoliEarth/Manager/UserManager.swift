@@ -23,13 +23,9 @@ class UserManager {
     }()
     private init(client:LoginClient) {
         loginClient = client
-        locationManager = CLLocationManager()
-        locationManager.requestWhenInUseAuthorization()
-
-
     }
     private var loginClient:LoginClient
-    private var locationManager:CLLocationManager
+    var location:CLLocationCoordinate2D?
     public var user:User? {
         didSet {
             if let user = user {
@@ -54,9 +50,11 @@ class UserManager {
         FBSDKAccessToken.setCurrent(nil)
     }
     private func getUserProfile(_ completionHandler:@escaping (User?)->Void){
-        loginClient.login { [weak self] (result) in
-            let user = User(name: result?.name, email: result?.middleName, image: result?.imageURL(for: FBSDKProfilePictureMode.square, size: CGSize(width: 100, height: 100)), level: 1)
+        loginClient.login { [weak self] (profile, userId)  in
+            let user = User(name: profile?.name, email: profile?.middleName, image: profile?.imageURL(for: FBSDKProfilePictureMode.square, size: CGSize(width: 100, height: 100)), level: 1, userId:userId)
             self?.user = user
+            UserDefaults.standard.set(user.userId, forKey: "userId")
+            UserDefaults.standard.synchronize()
             completionHandler(user)
         }
     }

@@ -44,9 +44,13 @@ class MainService {
      'description' (string)
 
  */
-    public func sendBitReport(_ report:ShowReport, completionHandler:@escaping ((_ isFinished:Bool) -> Void)) {
-        let parameters = ["latitude":Float(report.location.latitude),"longitude":Float(report.location.longitude)]
-        Alamofire.request(MBDomain.reports.name, method: .post, parameters: parameters).responseJSON { (result) in
+    public func sendBitReport(_ completionHandler:@escaping ((_ isFinished:Bool) -> Void)) {
+        guard let latitude = UserManager.shared.location?.latitude, let longitude = UserManager.shared.location?.longitude, let userId = UserManager.shared.user?.userId  else {
+            completionHandler(false)
+            return
+        }
+        let parameters:[String:Any] = ["latitude":latitude,"longitude":longitude, "userId": userId]
+        Alamofire.request(MBDomain.sendReport.name, method: .post, parameters: parameters).responseJSON { (result) in
             if let error = result.result.error {
                 print(error.localizedDescription)
             } else {
@@ -55,6 +59,9 @@ class MainService {
                 }
             }
         }
+    }
+    public func getCurrentLocationAlarm() {
+
     }
     public func sendReportImage(_ report:ShowReport, completionHandler:@escaping ((_ isFinished:Bool) -> Void)) {
         guard let image = report.img else {return}
@@ -81,7 +88,7 @@ class MainService {
                 }
             }
         },
-                         to:MBDomain.sendReport.name)
+                         to:MBDomain.sendReportImg.name)
         { (result) in
             switch result {
             case .success(let upload, _, _):
@@ -99,9 +106,6 @@ class MainService {
                 completionHandler(false)
             }
         }
-    }
-    public func getNumberOfReports(at:CLLocationCoordinate2D) {
-
     }
     public func sendMyLocation(at:CLLocationCoordinate2D, completionHandler:@escaping ((ArrayDataTransform<MBReport>?) -> Void)){
         let parameters = ["latitude":Double(at.latitude),"longitude":Double(at.longitude)]

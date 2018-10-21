@@ -11,16 +11,19 @@ import Foundation
 struct User:Codable {
     private enum CodingKeys: String, CodingKey {
         case name
+        case userId
         case email
         case image
         case level
     }
     let name:String?
+    let userId:Int?
     let email:String?
     let image:URL?
     let level:Int?
-    init(name:String?,email:String?,image:URL?, level:Int?) {
+    init(name:String?,email:String?,image:URL?, level:Int?, userId:Int?) {
         self.email = email
+        self.userId = userId
         self.name = name
         self.image = image
         self.level = level
@@ -30,6 +33,7 @@ extension User {
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         name = try? container.decode(String.self, forKey: .name)
+        userId = try? container.decode(Int.self, forKey: .userId)
         email = try? container.decode(String.self, forKey: .email)
         image = try? container.decode(URL.self, forKey: .image)
         level = try? container.decode(Int.self, forKey: .level)

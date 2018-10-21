@@ -69,9 +69,21 @@
                                     <action selector="addNodeRandomlu:" destination="BV1-FR-VrT" eventType="touchUpInside" id="oHK-cR-BWd"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="區域警示" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YMA-6j-Kpf">
+                                <rect key="frame" x="0.0" y="637" width="375" height="30"/>
+                                <color key="backgroundColor" red="0.023529411760000001" green="0.70196078429999997" blue="0.91372549020000005" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="DNT-kW-YsY"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <color key="textColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="fQZ-KI-GVf" firstAttribute="trailing" secondItem="YMA-6j-Kpf" secondAttribute="trailing" id="9tj-gX-Zio"/>
+                            <constraint firstItem="YMA-6j-Kpf" firstAttribute="leading" secondItem="fQZ-KI-GVf" secondAttribute="leading" id="Ejx-f8-Ocb"/>
                             <constraint firstItem="BrB-h1-WRS" firstAttribute="leading" secondItem="fQZ-KI-GVf" secondAttribute="leading" id="GsS-dJ-CKf"/>
                             <constraint firstItem="1ww-Vd-kGU" firstAttribute="leading" relation="lessThanOrEqual" secondItem="UDO-xa-V2X" secondAttribute="trailing" constant="150" id="LTy-DB-y8C"/>
                             <constraint firstItem="VpL-9i-LuZ" firstAttribute="leading" secondItem="UDO-xa-V2X" secondAttribute="leading" id="OXV-dW-5W8"/>
@@ -80,6 +92,7 @@
                             <constraint firstItem="BrB-h1-WRS" firstAttribute="bottom" secondItem="fQZ-KI-GVf" secondAttribute="bottom" id="VpT-BR-CcM"/>
                             <constraint firstItem="BrB-h1-WRS" firstAttribute="trailing" secondItem="fQZ-KI-GVf" secondAttribute="trailing" id="XyZ-9z-H8e"/>
                             <constraint firstItem="9kW-Fb-kb1" firstAttribute="centerX" secondItem="fQZ-KI-GVf" secondAttribute="centerX" id="csK-JB-PzW"/>
+                            <constraint firstItem="fQZ-KI-GVf" firstAttribute="bottom" secondItem="YMA-6j-Kpf" secondAttribute="bottom" id="gae-bD-qHP"/>
                             <constraint firstItem="BrB-h1-WRS" firstAttribute="top" secondItem="U0K-SW-4ec" secondAttribute="top" id="rJc-2c-zQA"/>
                             <constraint firstItem="fQZ-KI-GVf" firstAttribute="bottom" secondItem="9kW-Fb-kb1" secondAttribute="bottom" constant="141" id="tuu-wN-H2c"/>
                             <constraint firstItem="fQZ-KI-GVf" firstAttribute="trailing" secondItem="1ww-Vd-kGU" secondAttribute="trailing" constant="40" id="u0t-Rg-2GD"/>
@@ -95,11 +108,12 @@
                         <outlet property="profile" destination="1ww-Vd-kGU" id="WWz-YG-bKx"/>
                         <outlet property="progressView" destination="VpL-9i-LuZ" id="0ST-tK-j3Y"/>
                         <outlet property="sceneView" destination="BrB-h1-WRS" id="pDn-nn-FTB"/>
+                        <outlet property="statusAlertView" destination="YMA-6j-Kpf" id="cLb-vP-6nw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-532" y="133"/>
+            <point key="canvasLocation" x="-532" y="132.68365817091455"/>
         </scene>
         <!--Report View Controller-->
         <scene sceneID="zi2-3k-jcT">

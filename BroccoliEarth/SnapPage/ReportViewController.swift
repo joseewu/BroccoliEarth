@@ -23,29 +23,29 @@ class ReportViewController: BaseViewController {
             if isFinished {
                 self?.showAlert()
             } else {
-
+                self?.showError()
             }
-            self?.navigationController?.dismiss(animated: true, completion: nil)
         }
     }
     private func showAlert() {
         let alertController = UIAlertController(title: "回報成功", message: "經驗值+++", preferredStyle: .alert)
         let action = UIAlertAction(title: "取得經驗值", style: .default) { [weak self] _ in
-            self?.navigationController?.dismiss(animated: true, completion: nil)
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.3, execute: {
+                self?.navigationController?.popViewController(animated: true)
+            })
         }
         alertController.addAction(action)
         present(alertController, animated: true, completion: nil)
     }
     private func showError() {
-        let alertController = UIAlertController(title: "回報成功", message: "經驗值+++", preferredStyle: .alert)
-        let action = UIAlertAction(title: "取得經驗值", style: .default) { [weak self] _ in
-            self?.navigationController?.dismiss(animated: true, completion: nil)
+        let alertController = UIAlertController(title: "回報失敗", message: "請再次嘗試", preferredStyle: .alert)
+        let action = UIAlertAction(title: "我知道了", style: .cancel) { _ in
+            alertController.dismiss(animated: true, completion: nil)
         }
         alertController.addAction(action)
         present(alertController, animated: true, completion: nil)
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.navigationBar.isHidden = false
     }
 }

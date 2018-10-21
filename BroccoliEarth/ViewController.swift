@@ -28,6 +28,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     var currentLocation:CLLocationCoordinate2D? {
         didSet {
             userManager.location = currentLocation
+            getLocationStatus()
         }
     }
     @IBOutlet weak var nameLabel: UILabel!
@@ -43,6 +44,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         }
     }
 
+    @IBOutlet weak var statusAlertView: UILabel!
     private let userManager:UserManager = UserManager.shared
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -93,9 +95,23 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         let image = UIImage(named: "mosquitoPlant")!
         let annotationNode = LocationAnnotationNode(location: location, image: image)
         sceneLocationView.addLocationNodeWithConfirmedLocation(locationNode: annotationNode)
-        //25.026176, 121.526531
     }
-
+    private func getLocationStatus() {
+        client.getCurrentLocationAlarm {[weak self] (status) in
+            guard let status = status else {return}
+            self?.statusAlertView.text = status.warningTitle
+            switch status {
+            case .aware:
+                self?.statusAlertView.backgroundColor = UIColor("#f95a15")
+            case .good:
+                self?.statusAlertView.backgroundColor = UIColor("#016616")
+            case .soso:
+                self?.statusAlertView.backgroundColor = UIColor.blue
+            case .dangerous:
+                self?.statusAlertView.backgroundColor = UIColor.red
+            }
+        }
+    }
     private func transform(_ lati:CLLocationDegrees?, _ long:CLLocationDegrees?) -> CLLocationCoordinate2D {
         guard let lati = lati, let long = long else {
             return CLLocationCoordinate2D(latitude: 0, longitude: 0)
@@ -110,6 +126,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     }
     private func renderUi() {
         floatButton.buttonColor = UIColor("#c44056")
+        floatButton.frame.origin.y = view.frame.size.height - 80
         floatButton.addItem(icon: UIImage(named: "spaceman_bk")!) { [weak self] (item) in
             self?.showPersonalPage()
         }

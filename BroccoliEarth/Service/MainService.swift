@@ -16,6 +16,7 @@ enum MBDomain {
     case reports
     case sendReportImg
     case sendReport
+    case locationStatus
     var name:String {
         switch self {
         case .reportImg(let imageName):
@@ -26,8 +27,37 @@ enum MBDomain {
             return "https://api.mosquitalert.app/api/images"
         case .sendReport:
             return "https://api.mosquitalert.app/api/reports"
+        case .locationStatus:
+            return "http://54.65.61.167/predictcoords"
         default:
             return ""
+        }
+    }
+}
+enum MBLocationStatus {
+    case good
+    case soso
+    case aware
+    case dangerous
+    var warningTitle:String {
+        switch self {
+        case .aware:
+            return "注意區域"
+        case .good:
+            return "安全區域"
+        case .soso:
+            return "輕微區域"
+        case .dangerous:
+            return "危險區域"
+        }
+    }
+    init?(probability: CGFloat) {
+        switch true {
+        case (probability > 0 && probability < 0.25): self = .good
+        case probability >= 0.25 && probability < 0.5: self = .soso
+        case probability >= 0.5  && probability < 0.75: self = .aware
+        case probability >= 0.75: self = .dangerous
+        default: self = .good
         }
     }
 }
@@ -53,15 +83,43 @@ class MainService {
         Alamofire.request(MBDomain.sendReport.name, method: .post, parameters: parameters).responseJSON { (result) in
             if let error = result.result.error {
                 print(error.localizedDescription)
+                completionHandler(false)
             } else {
                 if let data = result.result.value as? [String:Any] {
-                    print(data)
+                    if let status = data["status"] as? String, status == "success" {
+                        completionHandler(true)
+                    } else {
+                        completionHandler(false)
+                    }
+                } else {
+                    completionHandler(false)
                 }
             }
         }
     }
-    public func getCurrentLocationAlarm() {
-
+    public func getCurrentLocationAlarm(_ completionHandler:@escaping ((_ status:MBLocationStatus?) -> Void)) {
+        guard let latitude = UserManager.shared.location?.latitude, let longitude = UserManager.shared.location?.longitude else {
+            completionHandler(nil)
+            return
+        }
+        let parameters:[String:Any] = ["lat":latitude,"lon":longitude]
+        Alamofire.request(MBDomain.locationStatus.name, method: .get, parameters: parameters).responseJSON { (result) in
+            if let error = result.result.error {
+                print(error.localizedDescription)
+                completionHandler(nil)
+            } else {
+                if let data = result.result.value as? [String:Any] {
+                    if let probibility = data["probability"] as? CGFloat {
+                        let status = MBLocationStatus.init(probability: probibility)
+                        completionHandler(status)
+                    } else {
+                        completionHandler(nil)
+                    }
+                } else {
+                    completionHandler(nil)
+                }
+            }
+        }
     }
     public func sendReportImage(_ report:ShowReport, completionHandler:@escaping ((_ isFinished:Bool) -> Void)) {
         guard let image = report.img else {return}

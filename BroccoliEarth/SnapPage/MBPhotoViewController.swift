@@ -8,7 +8,7 @@
 
 import UIKit
 import AVFoundation
-
+import CoreLocation
 class MBPhotoViewController: BaseViewController {
 
     @IBOutlet weak var previewView: UIView!
@@ -20,12 +20,15 @@ class MBPhotoViewController: BaseViewController {
     var captureSession: AVCaptureSession?
     var videoPreviewLayer: AVCaptureVideoPreviewLayer?
     var capturePhotoOutput: AVCapturePhotoOutput?
+    let locationManager = CLLocationManager()
+    private var currentLocation:CLLocationCoordinate2D?
     var imageSize:CGSize {
         return previewView.bounds.size
     }
     override func viewDidLoad() {
         super.viewDidLoad()
         setPhotoCapture()
+        getUserLocation()
         renderUI()
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -37,6 +40,17 @@ class MBPhotoViewController: BaseViewController {
         captureSession?.startRunning()
         previewView.layoutIfNeeded()
         videoPreviewLayer?.frame.size = previewView.bounds.size
+        locationManager.startUpdatingLocation()
+    }
+    private func getUserLocation() {
+        self.locationManager.requestAlwaysAuthorization()
+        self.locationManager.requestWhenInUseAuthorization()
+
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+            locationManager.startUpdatingLocation()
+        }
     }
     private func renderUI() {
         takePhotoButton.layer.cornerRadius = takePhotoButton.frame.size.width / 2
@@ -110,10 +124,18 @@ extension MBPhotoViewController:AVCapturePhotoCaptureDelegate {
             guard let image = sender as? UIImage else {
                 return
             }
+            locationManager.stopUpdatingLocation()
             vc.showImage = image
+            vc.location = currentLocation
         default:
             break
         }
+    }
+}
+extension MBPhotoViewController:CLLocationManagerDelegate {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
+        currentLocation = locValue
     }
 }
 extension UIImage{

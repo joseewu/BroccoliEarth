@@ -124,7 +124,7 @@ class MainService {
     public func sendReportImage(_ report:ShowReport, completionHandler:@escaping ((_ isFinished:Bool) -> Void)) {
         guard let image = report.img else {return}
         let imgData = image.jpegData(compressionQuality: 0.2)!
-        let parameters:[String:Any] = ["file": imgData, "userId":1, "latitude":Float(report.location.latitude), "longitude":Float(report.location.longitude),"type":"", "description":"好不爽"]
+        let parameters:[String:Any] = ["file": imgData, "userId":1, "latitude":Float(report.location.latitude), "longitude":Float(report.location.longitude),"type":"", "description":report.comment ?? ""]
         Alamofire.upload(multipartFormData: { multipartFormData in
             multipartFormData.append(imgData, withName: "file",fileName: "report.jpg", mimeType: "image/jpg")
             for (key, value) in parameters {

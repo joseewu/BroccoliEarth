@@ -18,6 +18,7 @@ struct ShowReport {
     let img:UIImage?
     let location:CLLocationCoordinate2D
     var comment:String?
+    var type:String?
 }
 class ViewController: UIViewController, ARSCNViewDelegate {
 
@@ -159,7 +160,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             let imgUrl = URL(string: url)
             UIImageView().sd_setImage(with: imgUrl) { (img, _, _, _) in
                 let coordinate1 = self.transform(CLLocationDegrees(exactly: Float(item.latitude ?? 0)), CLLocationDegrees(exactly: Float(item.longitude ?? 0)))
-                let showItem = ShowReport(img: img, location: coordinate1, comment: item.description)
+                let showItem = ShowReport(img: img, location: coordinate1, comment: item.description, type: item.type)
                 reports.append(showItem)
                 let locations = reports.map({ (item) -> CLLocationCoordinate2D in
                     return item.location

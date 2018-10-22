@@ -20,12 +20,14 @@ class MBReportPage: BaseViewController {
     @IBOutlet weak var typeSegment: UISegmentedControl!
     @IBOutlet weak var informationInput: UITextField!
     private let client:MainService = MainService()
+    private let locationType:[String] = ["室外","室內"]
     var location:CLLocationCoordinate2D?
     @IBAction func didTapReport(_ sender: Any) {
         //TODO: send report imformation
         guard let currentLocation = location else { return }
         let coordinate = CLLocationCoordinate2D(latitude: currentLocation.latitude, longitude: currentLocation.longitude)
-        let report = ShowReport.init(img: showImage, location: coordinate, comment: informationInput.text)
+        let selectedType:String = locationType[typeSegment.selectedSegmentIndex]
+        let report = ShowReport.init(img: showImage, location: coordinate, comment: informationInput.text, type: selectedType)
         client.sendReportImage(report) { [weak self] (isFinished) in
             if isFinished {
                self?.showAlert()
@@ -37,6 +39,7 @@ class MBReportPage: BaseViewController {
     }
     @IBAction func didSwitchType(_ sender: UISegmentedControl) {
         print(sender.selectedSegmentIndex)
+
     }
 
     convenience init(with imag:UIImage?) {

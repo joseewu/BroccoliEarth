@@ -26,17 +26,19 @@ class ViewController: UIViewController, ARSCNViewDelegate {
 
     var floatButton:Floaty = Floaty(size: 65)
     var sceneLocationView = SceneLocationView()
+    var currentAltitude:CLLocationDistance = 0
     var currentLocation:CLLocationCoordinate2D? {
         didSet {
-            userManager.location = currentLocation
-            getLocationStatus()
-            getMyLocationReport()
+            if oldValue == nil {
+                userManager.location = currentLocation
+                getLocationStatus()
+                getMyLocationReport()
+            }
         }
     }
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var progressView: UIProgressView!
     @IBOutlet weak var profile: UIImageView!
-    @IBOutlet weak var addScene: UIButton!
     var testLocation:CLLocationCoordinate2D?
     private let client:MainService = MainService()
     let configuration = ARWorldTrackingConfiguration()
@@ -55,16 +57,6 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         // Run the view's session
         sceneView.session.run(configuration)
         progressView.setProgress(Float(userManager.userlevel ?? 1), animated: true)
-    }
-
-    @IBAction func addNodeRandomlu(_ sender: Any) {
-        guard let currentLocation = currentLocation else {return}
-        let scene:SCNScene = SCNScene(named: "art.scnassets/Mosquito_Color.scn")!
-        let mosquitoNode = scene.rootNode.childNode(withName: "Mosquito", recursively: false)!
-        mosquitoNode.rotation = SCNVector4Make(0, 1, 0, .pi / 10)
-        mosquitoNode.scale = SCNVector3Make(0.1, 0.1, 0.1)
-    sceneLocationView.scene.rootNode.addChildNode(mosquitoNode)
-        print("count: \(sceneLocationView.scene.rootNode.childNodes.count)")
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -86,14 +78,13 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         sceneView.scene = scene
         sceneLocationView.run()
         view.addSubview(sceneLocationView)
-        addScene.isHidden = true
-        view.addSubview(addScene)
         userManager.login()
         renderUi()
+        //25.064879, 121.537740
         var locationsss:[CLLocationCoordinate2D] = [CLLocationCoordinate2D]()
-        let coordinate1 = transform(CLLocationDegrees(exactly: Float(25.026177)), CLLocationDegrees(exactly: Float(121.52656)))
+        let coordinate1 = transform(CLLocationDegrees(exactly: 25.064879), CLLocationDegrees(exactly: 121.537740))
         locationsss.append(coordinate1)
-        //renderLocationNode(locationsss)
+
         let location = CLLocation(coordinate: coordinate1, altitude: 10)
         let image = UIImage(named: "mosquitoPlant")!
         let annotationNode = LocationAnnotationNode(location: location, image: image)
@@ -122,10 +113,20 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         return CLLocationCoordinate2D(latitude: lati, longitude: long)
     }
     private func renderLocationNode(_ locations:[CLLocationCoordinate2D]) {
-        let locationNode = LocationNode.render(locations: locations)
-        for node in locationNode {
-            sceneLocationView.addLocationNodeWithConfirmedLocation(locationNode: node)
-        }
+//        25.064827, 121.537599
+        let _ = LocationNode.render(locations: locations)
+        let altitude = CLLocationDistance(exactly: currentAltitude)
+        //let houseLocation = CLLocation(coordinate: CLLocationCoordinate2D(latitude: 25.065213, longitude: 121.537379), altitude: altitude ?? 236)
+        let houseLocation = CLLocation(coordinate:  CLLocationCoordinate2D(latitude: 25.064827, longitude: 121.537599), altitude: 16)
+//        let boxGeometry = SCNBox(width: 100, height: 100, length: 100, chamferRadius: 0)
+//        let boxNode = SCNNode(geometry: boxGeometry)
+        let scene:SCNScene = SCNScene(named: "art.scnassets/Mosquito_Color.scn")!
+        let mosquito = scene.rootNode.childNode(withName: "Mosquito", recursively: false)!
+        let houseLocationNode = LocationSceneNode(location: houseLocation, node: mosquito)
+        sceneLocationView.addLocationNodeWithConfirmedLocation(locationNode: houseLocationNode)
+//        for node in locationNode {
+//            sceneLocationView.addLocationNodeWithConfirmedLocation(locationNode: node)
+//        }
     }
     private func renderUi() {
         floatButton.buttonColor = UIColor("#c44056")
@@ -153,21 +154,27 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     private func getAllShowReport(_ report:[MBReport]?) {
         guard let report = report else {return}
         var reports:[ShowReport] = [ShowReport]()
+        var locations:[CLLocationCoordinate2D] = [CLLocationCoordinate2D]()
         for item in report {
-            guard let url = item.url else {
-                return
-            }
-            let imgUrl = URL(string: url)
-            UIImageView().sd_setImage(with: imgUrl) { (img, _, _, _) in
-                let coordinate1 = self.transform(CLLocationDegrees(exactly: Float(item.latitude ?? 0)), CLLocationDegrees(exactly: Float(item.longitude ?? 0)))
-                let showItem = ShowReport(img: img, location: coordinate1, comment: item.description, type: item.type)
-                reports.append(showItem)
-                let locations = reports.map({ (item) -> CLLocationCoordinate2D in
-                    return item.location
-                })
-                self.renderLocationNode(locations)
-            }
+            let coordinate1 = self.transform(CLLocationDegrees(exactly: item.latitude ?? 0), CLLocationDegrees(exactly: item.longitude ?? 0))
+            locations.append(coordinate1)
+            let showItem = ShowReport(img: nil, location: coordinate1, comment: item.description, type: item.type)
+            reports.append(showItem)
+//            guard let url = item.url else {
+//                return
+//            }
+//            let imgUrl = URL(string: url)
+//            UIImageView().sd_setImage(with: imgUrl) { (img, _, _, _) in
+//                let coordinate1 = self.transform(CLLocationDegrees(exactly: item.latitude ?? 0), CLLocationDegrees(exactly: item.longitude ?? 0))
+//                let showItem = ShowReport(img: img, location: coordinate1, comment: item.description, type: item.type)
+//                reports.append(showItem)
+//                let locations = reports.map({ (item) -> CLLocationCoordinate2D in
+//                    return item.location
+//                })
+//                self.renderLocationNode(locations)
+//            }
         }
+        self.renderLocationNode(locations)
     }
     private func showReportPage() {
         let storyboard:UIStoryboard = UIStoryboard(name: "ReportPages", bundle: nil)
@@ -222,9 +229,8 @@ class ViewController: UIViewController, ARSCNViewDelegate {
 }
 extension ViewController:SceneLocationViewDelegate {
     func sceneLocationViewDidAddSceneLocationEstimate(sceneLocationView: SceneLocationView, position: SCNVector3, location: CLLocation) {
-        if let current = sceneLocationView.currentLocation()?.coordinate {
-            addNode(at: current)
-        }
+        currentLocation = location.coordinate
+        currentAltitude = location.altitude
     }
     
     func sceneLocationViewDidRemoveSceneLocationEstimate(sceneLocationView: SceneLocationView, position: SCNVector3, location: CLLocation) {

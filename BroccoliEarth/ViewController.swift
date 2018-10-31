@@ -33,6 +33,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
                 userManager.location = currentLocation
                 getLocationStatus()
                 getMyLocationReport()
+                addMockLocation()
             }
         }
     }
@@ -42,6 +43,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     var testLocation:CLLocationCoordinate2D?
     private let client:MainService = MainService()
     let configuration = ARWorldTrackingConfiguration()
+    let mockLocation:MockLoactions = MockLoactions()
     private var reportImgs:[UIImage?] = [UIImage?]() {
         didSet {
 
@@ -80,7 +82,6 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         view.addSubview(sceneLocationView)
         userManager.login()
         renderUi()
-        //25.064879, 121.537740
         var locationsss:[CLLocationCoordinate2D] = [CLLocationCoordinate2D]()
         let coordinate1 = transform(CLLocationDegrees(exactly: 25.064879), CLLocationDegrees(exactly: 121.537740))
         locationsss.append(coordinate1)
@@ -106,6 +107,17 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             }
         }
     }
+    private func addMockLocation() {
+        for item in mockLocation.locations {
+            let location = CLLocation(latitude: item.latitude ?? 0, longitude: item.longitude ?? 0)
+            let scene:SCNScene = SCNScene(named: "art.scnassets/ship.scn")!
+            let ship = scene.rootNode.childNode(withName: "ship", recursively: false)!
+            //let houseLocationNode = LocationSceneNode(location: location, node: ship)
+            let locationNode = LocationNode(location: location)
+            locationNode.addChildNode(ship)
+            sceneLocationView.addLocationNodeWithConfirmedLocation(locationNode: locationNode)
+        }
+    }
     private func transform(_ lati:CLLocationDegrees?, _ long:CLLocationDegrees?) -> CLLocationCoordinate2D {
         guard let lati = lati, let long = long else {
             return CLLocationCoordinate2D(latitude: 0, longitude: 0)
@@ -120,9 +132,9 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         let houseLocation = CLLocation(coordinate:  CLLocationCoordinate2D(latitude: 25.064827, longitude: 121.537599), altitude: 16)
 //        let boxGeometry = SCNBox(width: 100, height: 100, length: 100, chamferRadius: 0)
 //        let boxNode = SCNNode(geometry: boxGeometry)
-        let scene:SCNScene = SCNScene(named: "art.scnassets/Mosquito_Color.scn")!
-        let mosquito = scene.rootNode.childNode(withName: "Mosquito", recursively: false)!
-        let houseLocationNode = LocationSceneNode(location: houseLocation, node: mosquito)
+        let scene:SCNScene = SCNScene(named: "art.scnassets/ship.scn")!
+        let ship = scene.rootNode.childNode(withName: "ship", recursively: false)!
+        let houseLocationNode = LocationSceneNode(location: houseLocation, node: ship)
         sceneLocationView.addLocationNodeWithConfirmedLocation(locationNode: houseLocationNode)
 //        for node in locationNode {
 //            sceneLocationView.addLocationNodeWithConfirmedLocation(locationNode: node)

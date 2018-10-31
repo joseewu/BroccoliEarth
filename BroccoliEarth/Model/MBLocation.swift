@@ -22,6 +22,14 @@ struct MBLocation:Codable {
     let longitude:Double?
     let isOverRated:Bool?
     let reportNumber:Double?
+    init(_ latitude:Double,_ longitude:Double ) {
+        self.latitude = latitude
+        self.longitude = longitude
+        self.name = nil
+        self.isOverRated = nil
+        self.reportNumber = nil
+
+    }
 }
 extension MBLocation {
     init(from decoder: Decoder) throws {

@@ -94,7 +94,17 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         sceneLocationView.addLocationNodeWithConfirmedLocation(locationNode: annotationNode)
     }
     @objc private func didTapOnScene(gesture: UITapGestureRecognizer) {
-        
+        if gesture.state == .ended {
+            let location: CGPoint = gesture.location(in:sceneLocationView)
+            let hits = sceneLocationView.hitTest(location, options: nil)
+            if !hits.isEmpty{
+                let tappedNode = hits.first?.node
+                if let isTap = tappedNode?.isKind(of: LocationSceneNode.self), isTap {
+
+                    print("yessssssss")
+                }
+            }
+        }
     }
     private func getLocationStatus() {
         client.getCurrentLocationAlarm {[weak self] (status) in

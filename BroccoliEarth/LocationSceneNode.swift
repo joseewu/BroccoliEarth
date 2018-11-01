@@ -12,8 +12,6 @@ import CoreLocation
 import ARCL
 open class LocationSceneNode: LocationNode {
 
-    ///Subnodes and adjustments should be applied to this subnode
-    ///Required to allow scaling at the same time as having a 2D 'billboard' appearance
     public let annotationNode: SCNNode
 
     public var scaleRelativeToDistance = false

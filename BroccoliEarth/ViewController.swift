@@ -33,7 +33,6 @@ class ViewController: UIViewController, ARSCNViewDelegate {
                 userManager.location = currentLocation
                 getLocationStatus()
                 getMyLocationReport()
-                addMockLocation()
             }
         }
     }
@@ -111,8 +110,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         for item in mockLocation.locations {
             let location = CLLocation(latitude: item.latitude ?? 0, longitude: item.longitude ?? 0)
             let scene:SCNScene = SCNScene(named: "art.scnassets/ship.scn")!
-            let ship = scene.rootNode.childNode(withName: "ship", recursively: false)!
-            //let houseLocationNode = LocationSceneNode(location: location, node: ship)
+            let ship = scene.rootNode.clone()
             let locationNode = LocationNode(location: location)
             locationNode.addChildNode(ship)
             sceneLocationView.addLocationNodeWithConfirmedLocation(locationNode: locationNode)
@@ -125,20 +123,18 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         return CLLocationCoordinate2D(latitude: lati, longitude: long)
     }
     private func renderLocationNode(_ locations:[CLLocationCoordinate2D]) {
-//        25.064827, 121.537599
         let _ = LocationNode.render(locations: locations)
         let altitude = CLLocationDistance(exactly: currentAltitude)
-        //let houseLocation = CLLocation(coordinate: CLLocationCoordinate2D(latitude: 25.065213, longitude: 121.537379), altitude: altitude ?? 236)
-        let houseLocation = CLLocation(coordinate:  CLLocationCoordinate2D(latitude: 25.064827, longitude: 121.537599), altitude: 16)
-//        let boxGeometry = SCNBox(width: 100, height: 100, length: 100, chamferRadius: 0)
-//        let boxNode = SCNNode(geometry: boxGeometry)
-        let scene:SCNScene = SCNScene(named: "art.scnassets/ship.scn")!
-        let ship = scene.rootNode.childNode(withName: "ship", recursively: false)!
-        let houseLocationNode = LocationSceneNode(location: houseLocation, node: ship)
-        sceneLocationView.addLocationNodeWithConfirmedLocation(locationNode: houseLocationNode)
-//        for node in locationNode {
-//            sceneLocationView.addLocationNodeWithConfirmedLocation(locationNode: node)
-//        }
+        let houseLocation = CLLocation(coordinate:  currentLocation ?? CLLocationCoordinate2D(latitude: 25.030746, longitude: 121.549358), altitude: 21)
+        let ship = SCNScene(named: "art.scnassets/ship.scn")!.rootNode.clone()
+        let shipNode = LocationSceneNode(location: houseLocation, node: ship)
+        sceneLocationView.addLocationNodeWithConfirmedLocation(locationNode: shipNode)
+        let myCurrentTest = CLLocation(coordinate:  currentLocation ?? CLLocationCoordinate2D(latitude: 25.030746, longitude: 121.549358), altitude: 21)
+        let mosquito2 = SCNScene(named: "art.scnassets/Mosquito_Color.scn")!.rootNode.clone()
+        let mosquito2Node = LocationSceneNode(location: myCurrentTest, node: mosquito2)
+        sceneLocationView.addLocationNodeWithConfirmedLocation(locationNode: mosquito2Node)
+        sceneView.scene.rootNode.addChildNode(mosquito2)
+        sceneView.scene.rootNode.addChildNode(ship)
     }
     private func renderUi() {
         floatButton.buttonColor = UIColor("#c44056")
@@ -243,6 +239,9 @@ extension ViewController:SceneLocationViewDelegate {
     func sceneLocationViewDidAddSceneLocationEstimate(sceneLocationView: SceneLocationView, position: SCNVector3, location: CLLocation) {
         currentLocation = location.coordinate
         currentAltitude = location.altitude
+        print(currentLocation?.latitude.description)
+        print(currentLocation?.longitude.description)
+        print(currentAltitude)
     }
     
     func sceneLocationViewDidRemoveSceneLocationEstimate(sceneLocationView: SceneLocationView, position: SCNVector3, location: CLLocation) {
@@ -250,7 +249,6 @@ extension ViewController:SceneLocationViewDelegate {
     }
     
     func sceneLocationViewDidConfirmLocationOfNode(sceneLocationView: SceneLocationView, node: LocationNode) {
-
     }
     
     func sceneLocationViewDidSetupSceneNode(sceneLocationView: SceneLocationView, sceneNode: SCNNode) {

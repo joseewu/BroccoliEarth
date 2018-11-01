@@ -17,11 +17,15 @@ struct MockLoactions {
         let store:MBLocation = MBLocation(25.031106, 121.548279)
         let chineseBank:MBLocation = MBLocation(25.029851, 121.548496)
         let meatStore:MBLocation = MBLocation(25.030606, 121.550185)
+        let school:MBLocation = MBLocation(25.033788, 121.540417)
+        let gym:MBLocation = MBLocation(25.033763, 121.539446)
         temp.append(bank)
         temp.append(myCurrent)
         temp.append(store)
         temp.append(chineseBank)
         temp.append(meatStore)
+        temp.append(school)
+        temp.append(gym)
         self.locations = temp
     }
 }

@@ -33,6 +33,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
                 userManager.location = currentLocation
                 getLocationStatus()
                 getMyLocationReport()
+                addMockLocation()
             }
         }
     }
@@ -79,6 +80,8 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         sceneView.scene = scene
         sceneLocationView.run()
         view.addSubview(sceneLocationView)
+        let tap = UITapGestureRecognizer(target: self, action: #selector(didTapOnScene(gesture:)))
+        sceneLocationView.addGestureRecognizer(tap)
         userManager.login()
         renderUi()
         var locationsss:[CLLocationCoordinate2D] = [CLLocationCoordinate2D]()
@@ -89,6 +92,9 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         let image = UIImage(named: "mosquitoPlant")!
         let annotationNode = LocationAnnotationNode(location: location, image: image)
         sceneLocationView.addLocationNodeWithConfirmedLocation(locationNode: annotationNode)
+    }
+    @objc private func didTapOnScene(gesture: UITapGestureRecognizer) {
+        
     }
     private func getLocationStatus() {
         client.getCurrentLocationAlarm {[weak self] (status) in
@@ -109,11 +115,11 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     private func addMockLocation() {
         for item in mockLocation.locations {
             let location = CLLocation(latitude: item.latitude ?? 0, longitude: item.longitude ?? 0)
-            let scene:SCNScene = SCNScene(named: "art.scnassets/ship.scn")!
-            let ship = scene.rootNode.clone()
-            let locationNode = LocationNode(location: location)
-            locationNode.addChildNode(ship)
-            sceneLocationView.addLocationNodeWithConfirmedLocation(locationNode: locationNode)
+            let mosquitoNode = SCNScene(named: "art.scnassets/ship.scn")!.rootNode.clone()
+            let mosquitoLocationNode = LocationSceneNode(location: location, node: mosquitoNode)
+            sceneLocationView.addLocationNodeWithConfirmedLocation(locationNode: mosquitoLocationNode)
+
+            sceneView.scene.rootNode.addChildNode(mosquitoNode)
         }
     }
     private func transform(_ lati:CLLocationDegrees?, _ long:CLLocationDegrees?) -> CLLocationCoordinate2D {

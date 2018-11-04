@@ -13,7 +13,6 @@ import ARCL
 open class LocationSceneNode: LocationNode {
 
     public let annotationNode: SCNNode
-
     public var scaleRelativeToDistance = false
 
     public init(location: CLLocation?, node: SCNNode) {
@@ -30,3 +29,4 @@ open class LocationSceneNode: LocationNode {
         fatalError("init(coder:) has not been implemented")
     }
 }
+

@@ -26,8 +26,9 @@ class MBReportPage: BaseViewController {
         //TODO: send report imformation
         guard let currentLocation = location else { return }
         let coordinate = CLLocationCoordinate2D(latitude: currentLocation.latitude, longitude: currentLocation.longitude)
+        let nodeLocation = CLLocation(coordinate: coordinate, altitude: 0)
         let selectedType:String = locationType[typeSegment.selectedSegmentIndex]
-        let report = ShowReport.init(img: showImage, location: coordinate, comment: informationInput.text, type: selectedType)
+        let report = ShowReport.init(img: showImage, location: nodeLocation, comment: informationInput.text, type: selectedType)
         client.sendReportImage(report) { [weak self] (isFinished) in
             if isFinished {
                self?.showAlert()

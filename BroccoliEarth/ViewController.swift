@@ -16,7 +16,7 @@ import SDWebImage
 
 struct ShowReport {
     let img:UIImage?
-    let location:CLLocationCoordinate2D
+    let location:CLLocation
     var comment:String?
     var type:String?
 }
@@ -33,7 +33,6 @@ class ViewController: UIViewController, ARSCNViewDelegate {
                 userManager.location = currentLocation
                 getLocationStatus()
                 getMyLocationReport()
-                addMockLocation()
             }
         }
     }
@@ -44,6 +43,13 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     private let client:MainService = MainService()
     let configuration = ARWorldTrackingConfiguration()
     let mockLocation:MockLoactions = MockLoactions()
+    var mockLocationNode:[LocationSceneNode] = [LocationSceneNode]()
+    var mockNode:[SCNNode] = [SCNNode]()
+    private var myShowReport:[ShowReport] = [ShowReport]() {
+        didSet {
+            renderLocationNode(myShowReport)
+        }
+    }
     private var reportImgs:[UIImage?] = [UIImage?]() {
         didSet {
 
@@ -75,8 +81,8 @@ class ViewController: UIViewController, ARSCNViewDelegate {
                 print(error?.localizedDescription ?? "an error occur")
             }
         }
-        let scene:SCNScene = SCNScene(named: "art.scnassets/Mosquito_Color.scn")!
-        // Set the scene to the view
+//        let scene:SCNScene = SCNScene(named: "art.scnassets/Mosquito_Color.scn")!
+        let scene:SCNScene = SCNScene()
         sceneView.scene = scene
         sceneLocationView.run()
         view.addSubview(sceneLocationView)
@@ -98,15 +104,43 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             let location: CGPoint = gesture.location(in:sceneView)
             let hits = sceneView.hitTest(location, options: nil)
             if !hits.isEmpty{
-                let result = hits.filter { (item) -> Bool in
-                    return item.node.accessibilityHint == "ship"
-                }
-                if result.count > 0 {
-                    print("yessssssss")
-                } else {
-                    print("noooooo")
+                let touchedNode = hits.first?.node
+                if let locationNode = getLocationNode(node: touchedNode) {
+                    print(locationNode)
                 }
             }
+        }
+    }
+    private func addLocationNote(at location:CLLocation, with rootNode:SCNNode?) {
+        guard let rootNode = rootNode else {
+            return
+        }
+        let location = CLLocation(coordinate: location.coordinate, altitude: location.altitude)
+        let image = UIImage(named: "dialog")!
+        let annotationNode = LocationAnnotationNode(location: location, image: image)
+        annotationNode.annotationNode.scale = SCNVector3(0.05, 0.05, 0.05)
+        annotationNode.annotationNode.localTranslate(by: SCNVector3(0, 0, -0.5))
+        rootNode.addChildNode(annotationNode.annotationNode)
+    }
+    func getLocationNode(node: SCNNode?) -> SCNNode? {
+        guard let node = node else {return nil}
+        var nodeStack:[SCNNode] = [SCNNode]()
+        nodeStack.append(node)
+        if let hint = node.accessibilityHint {
+            let jjj = mockLocationNode.filter { (item) -> Bool in
+                return item.tag == hint
+            }
+            if let sameNode =  jjj.first {
+                print(sameNode.location)
+                addLocationNote(at: sameNode.location, with: nodeStack.first)
+                print(currentLocation)
+            }
+            return node
+        } else {
+            if let parenNode = node.parent {
+                return getLocationNode(node: parenNode)
+            }
+             return nil
         }
     }
     private func getLocationStatus() {
@@ -127,13 +161,23 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     }
     private func addMockLocation() {
         let altitude = CLLocationDistance(exactly: currentAltitude)
+        var mockLocationNodeTemp:[LocationSceneNode] = [LocationSceneNode]()
+        var mockNodeTemp:[SCNNode] = [SCNNode]()
+        var i = 0
         for item in mockLocation.locations {
+            i += 1
             let location = CLLocation(coordinate: CLLocationCoordinate2D(latitude: item.latitude ?? 0, longitude: item.longitude ?? 0), altitude: altitude ?? 10)
             let mosquitoNode = SCNScene(named: "art.scnassets/Mosquito_Color.scn")!.rootNode.clone()
+            mosquitoNode.accessibilityHint = "\(i)"
+            mockNodeTemp.append(mosquitoNode)
             let mosquitoLocationNode = LocationSceneNode(location: location, node: mosquitoNode)
+            mosquitoLocationNode.tag = "\(i)"
+            mockLocationNodeTemp.append(mosquitoLocationNode)
             sceneLocationView.addLocationNodeWithConfirmedLocation(locationNode: mosquitoLocationNode)
             sceneView.scene.rootNode.addChildNode(mosquitoNode)
         }
+        mockLocationNode = mockLocationNodeTemp
+        mockNode = mockNodeTemp
     }
     private func transform(_ lati:CLLocationDegrees?, _ long:CLLocationDegrees?) -> CLLocationCoordinate2D {
         guard let lati = lati, let long = long else {
@@ -141,19 +185,24 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         }
         return CLLocationCoordinate2D(latitude: lati, longitude: long)
     }
-    private func renderLocationNode(_ locations:[CLLocationCoordinate2D]) {
-        let _ = LocationNode.render(locations: locations)
-        let altitude = CLLocationDistance(exactly: currentAltitude)
-        let houseLocation = CLLocation(coordinate:  currentLocation ?? CLLocationCoordinate2D(latitude: 25.030746, longitude: 121.549358), altitude: 21)
-        let ship = SCNScene(named: "art.scnassets/ship.scn")!.rootNode.clone()
-        let shipNode = LocationSceneNode(location: houseLocation, node: ship)
-        sceneLocationView.addLocationNodeWithConfirmedLocation(locationNode: shipNode)
-        let myCurrentTest = CLLocation(coordinate:  currentLocation ?? CLLocationCoordinate2D(latitude: 25.030746, longitude: 121.549358), altitude: 21)
-        let mosquito2 = SCNScene(named: "art.scnassets/Mosquito_Color.scn")!.rootNode.clone()
-        let mosquito2Node = LocationSceneNode(location: myCurrentTest, node: mosquito2)
-        sceneLocationView.addLocationNodeWithConfirmedLocation(locationNode: mosquito2Node)
-        sceneView.scene.rootNode.addChildNode(mosquito2)
-        sceneView.scene.rootNode.addChildNode(ship)
+    private func renderLocationNode(_ locations:[ShowReport]) {
+        var locationNodeTemp:[LocationSceneNode] = [LocationSceneNode]()
+        var nodeTemp:[SCNNode] = [SCNNode]()
+        var i = 0
+        for item in locations {
+
+            i += 1
+            let mosquitoNode = SCNScene(named: "art.scnassets/Mosquito_Color.scn")!.rootNode.clone()
+            mosquitoNode.accessibilityHint = "\(i)"
+            nodeTemp.append(mosquitoNode)
+            let mosquitoLocationNode = LocationSceneNode(location: item.location, node: mosquitoNode)
+            mosquitoLocationNode.tag = "\(i)"
+            locationNodeTemp.append(mosquitoLocationNode)
+            sceneLocationView.addLocationNodeWithConfirmedLocation(locationNode: mosquitoLocationNode)
+            sceneView.scene.rootNode.addChildNode(mosquitoNode)
+        }
+        mockLocationNode = locationNodeTemp
+        mockNode = nodeTemp
     }
     private func renderUi() {
         floatButton.buttonColor = UIColor("#c44056")
@@ -181,27 +230,17 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     private func getAllShowReport(_ report:[MBReport]?) {
         guard let report = report else {return}
         var reports:[ShowReport] = [ShowReport]()
-        var locations:[CLLocationCoordinate2D] = [CLLocationCoordinate2D]()
         for item in report {
-            let coordinate1 = self.transform(CLLocationDegrees(exactly: item.latitude ?? 0), CLLocationDegrees(exactly: item.longitude ?? 0))
-            locations.append(coordinate1)
-            let showItem = ShowReport(img: nil, location: coordinate1, comment: item.description, type: item.type)
-            reports.append(showItem)
-            //            guard let url = item.url else {
-            //                return
-            //            }
-            //            let imgUrl = URL(string: url)
-            //            UIImageView().sd_setImage(with: imgUrl) { (img, _, _, _) in
-            //                let coordinate1 = self.transform(CLLocationDegrees(exactly: item.latitude ?? 0), CLLocationDegrees(exactly: item.longitude ?? 0))
-            //                let showItem = ShowReport(img: img, location: coordinate1, comment: item.description, type: item.type)
-            //                reports.append(showItem)
-            //                let locations = reports.map({ (item) -> CLLocationCoordinate2D in
-            //                    return item.location
-            //                })
-            //                self.renderLocationNode(locations)
-            //            }
+            guard let latitude = item.latitude, let longitude = item.longitude else {return}
+            let coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+            let location = CLLocation(coordinate: coordinate, altitude: currentAltitude)
+                let imgUrl = URL(string: item.url ?? "")
+                UIImageView().sd_setImage(with: imgUrl) { [weak self] (img, _, _, _) in
+                    let showItem = ShowReport(img: img, location: location, comment: item.description, type: item.type)
+                    reports.append(showItem)
+                    self?.myShowReport = reports
+                }
         }
-        //self.renderLocationNode(locations)
     }
     private func showReportPage() {
         let storyboard:UIStoryboard = UIStoryboard(name: "ReportPages", bundle: nil)
@@ -258,6 +297,8 @@ extension ViewController:SceneLocationViewDelegate {
     func sceneLocationViewDidAddSceneLocationEstimate(sceneLocationView: SceneLocationView, position: SCNVector3, location: CLLocation) {
         currentLocation = location.coordinate
         currentAltitude = location.altitude
+        print(currentLocation)
+
     }
     
     func sceneLocationViewDidRemoveSceneLocationEstimate(sceneLocationView: SceneLocationView, position: SCNVector3, location: CLLocation) {

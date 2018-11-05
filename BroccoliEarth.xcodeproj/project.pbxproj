@@ -10,6 +10,7 @@
 		0C40C6732B998DCF2A6E6D63 /* Pods_BroccoliEarthTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E52F61EC64E4340E547E858 /* Pods_BroccoliEarthTests.framework */; };
 		5BA8985C9685F3CD0232653A /* Pods_BroccoliEarth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01FE3D1261B2A764D19FD456 /* Pods_BroccoliEarth.framework */; };
 		ACABDBCA6627C91BDC8E3A70 /* Pods_BroccoliEarthUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6CF5E0C9E1C673FA4286D68 /* Pods_BroccoliEarthUITests.framework */; };
+		EB0DEEDC218936F00016523E /* MockLoactions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB0DEEDB218936F00016523E /* MockLoactions.swift */; };
 		EB11A3B621708CDC00AF6C0C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB11A3B521708CDC00AF6C0C /* AppDelegate.swift */; };
 		EB11A3B821708CDC00AF6C0C /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = EB11A3B721708CDC00AF6C0C /* art.scnassets */; };
 		EB11A3BA21708CDC00AF6C0C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB11A3B921708CDC00AF6C0C /* ViewController.swift */; };
@@ -30,6 +31,7 @@
 		EB47666221779DFA001FD03A /* UIColor+HexString.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB47666021779DFA001FD03A /* UIColor+HexString.swift */; };
 		EB4766642177A068001FD03A /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB4766632177A068001FD03A /* Login.storyboard */; };
 		EB7D801421762B3B00208461 /* MBLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB7D801221762B3B00208461 /* MBLoginViewController.swift */; };
+		EB82D1262188AFF900D30982 /* LocationSceneNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB82D1252188AFF800D30982 /* LocationSceneNode.swift */; };
 		EB91CC73217AC74E0008787F /* ReportImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB91CC71217AC74E0008787F /* ReportImageCell.swift */; };
 		EB91CC74217AC74E0008787F /* ReportImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB91CC72217AC74E0008787F /* ReportImageCell.xib */; };
 		EB91CC78217B2A590008787F /* Q_AViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB91CC76217B2A590008787F /* Q_AViewController.swift */; };
@@ -81,6 +83,7 @@
 		9E52F61EC64E4340E547E858 /* Pods_BroccoliEarthTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BroccoliEarthTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBF42AA92757564EB05B6115 /* Pods-BroccoliEarthUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BroccoliEarthUITests.release.xcconfig"; path = "Target Support Files/Pods-BroccoliEarthUITests/Pods-BroccoliEarthUITests.release.xcconfig"; sourceTree = "<group>"; };
 		E1C82F1900C8F99B09C68638 /* Pods-BroccoliEarthTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BroccoliEarthTests.debug.xcconfig"; path = "Target Support Files/Pods-BroccoliEarthTests/Pods-BroccoliEarthTests.debug.xcconfig"; sourceTree = "<group>"; };
+		EB0DEEDB218936F00016523E /* MockLoactions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockLoactions.swift; sourceTree = "<group>"; };
 		EB11A3B221708CDC00AF6C0C /* BroccoliEarth.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BroccoliEarth.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB11A3B521708CDC00AF6C0C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EB11A3B721708CDC00AF6C0C /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
@@ -107,6 +110,7 @@
 		EB47666021779DFA001FD03A /* UIColor+HexString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+HexString.swift"; sourceTree = "<group>"; };
 		EB4766632177A068001FD03A /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		EB7D801221762B3B00208461 /* MBLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MBLoginViewController.swift; sourceTree = "<group>"; };
+		EB82D1252188AFF800D30982 /* LocationSceneNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSceneNode.swift; sourceTree = "<group>"; };
 		EB91CC71217AC74E0008787F /* ReportImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportImageCell.swift; sourceTree = "<group>"; };
 		EB91CC72217AC74E0008787F /* ReportImageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReportImageCell.xib; sourceTree = "<group>"; };
 		EB91CC76217B2A590008787F /* Q_AViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Q_AViewController.swift; sourceTree = "<group>"; };
@@ -218,6 +222,7 @@
 				EB47665321779757001FD03A /* SnapPage */,
 				EB7D801621762B4000208461 /* Login */,
 				EB11A3B921708CDC00AF6C0C /* ViewController.swift */,
+				EB82D1252188AFF800D30982 /* LocationSceneNode.swift */,
 				EB91CC7B217B360F0008787F /* LocationNodeExt.swift */,
 				EB91CC7A217B2A640008787F /* Q&A */,
 				EB91CC75217AD27F0008787F /* PersonalPage */,
@@ -332,6 +337,7 @@
 			isa = PBXGroup;
 			children = (
 				EBDCDAEE2175C0CB00963A2B /* MBLocation.swift */,
+				EB0DEEDB218936F00016523E /* MockLoactions.swift */,
 				EBFA15D4217B5C9400535510 /* MBReport.swift */,
 				EBFF28EC217A16110044B1AE /* User.swift */,
 			);
@@ -616,6 +622,7 @@
 				EB47666221779DFA001FD03A /* UIColor+HexString.swift in Sources */,
 				EBDCDAF22175CD6100963A2B /* MBPhotoViewController.swift in Sources */,
 				EBC3F12A2178BFC600524467 /* ButtonTableViewCell.swift in Sources */,
+				EB82D1262188AFF900D30982 /* LocationSceneNode.swift in Sources */,
 				EBFF28E82179B1270044B1AE /* BaseViewController.swift in Sources */,
 				EB11A3B621708CDC00AF6C0C /* AppDelegate.swift in Sources */,
 				EBFA15D8217C32F300535510 /* QAContentTableViewCell.swift in Sources */,
@@ -624,6 +631,7 @@
 				EBFF28EA2179BE130044B1AE /* BaseNavigationController.swift in Sources */,
 				EB47666121779DFA001FD03A /* UILabel+letterSpacing.swift in Sources */,
 				EBDCDAEB217592BC00963A2B /* MainService.swift in Sources */,
+				EB0DEEDC218936F00016523E /* MockLoactions.swift in Sources */,
 				EBDCDAED217597D700963A2B /* ReportViewController.swift in Sources */,
 				EB7D801421762B3B00208461 /* MBLoginViewController.swift in Sources */,
 				EB1D38B92178A1DC009CE83E /* PhotosPreviewPage.swift in Sources */,

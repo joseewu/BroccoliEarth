@@ -45,11 +45,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     let mockLocation:MockLoactions = MockLoactions()
     var mockLocationNode:[LocationSceneNode] = [LocationSceneNode]()
     var mockNode:[SCNNode] = [SCNNode]()
-    private var myShowReport:[ShowReport] = [ShowReport]() {
-        didSet {
-            renderLocationNode(myShowReport)
-        }
-    }
+    private var myShowReport:[ShowReport] = [ShowReport]()
     private var reportImgs:[UIImage?] = [UIImage?]() {
         didSet {
 
@@ -90,14 +86,6 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         sceneLocationView.addGestureRecognizer(tap)
         userManager.login()
         renderUi()
-        var locationsss:[CLLocationCoordinate2D] = [CLLocationCoordinate2D]()
-        let coordinate1 = transform(CLLocationDegrees(exactly: 25.064879), CLLocationDegrees(exactly: 121.537740))
-        locationsss.append(coordinate1)
-
-        let location = CLLocation(coordinate: coordinate1, altitude: 10)
-        let image = UIImage(named: "mosquitoPlant")!
-        let annotationNode = LocationAnnotationNode(location: location, image: image)
-        sceneLocationView.addLocationNodeWithConfirmedLocation(locationNode: annotationNode)
     }
     @objc private func didTapOnScene(gesture: UITapGestureRecognizer) {
         if gesture.state == .ended {
@@ -115,12 +103,22 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         guard let rootNode = rootNode else {
             return
         }
-        let location = CLLocation(coordinate: location.coordinate, altitude: location.altitude)
-        let image = UIImage(named: "dialog")!
-        let annotationNode = LocationAnnotationNode(location: location, image: image)
-        annotationNode.annotationNode.scale = SCNVector3(0.05, 0.05, 0.05)
-        annotationNode.annotationNode.localTranslate(by: SCNVector3(0, 0, -0.5))
-        rootNode.addChildNode(annotationNode.annotationNode)
+//        let location = CLLocation(coordinate: location.coordinate, altitude: location.altitude)
+//        let image = UIImage(named: "dialog")!
+//        let annotationNode = LocationAnnotationNode(location: location, image: image)
+//        annotationNode.annotationNode.scale = SCNVector3(0.05, 0.05, 0.05)
+//        annotationNode.annotationNode.localTranslate(by: SCNVector3(0, 0, -0.5))
+//        rootNode.addChildNode(annotationNode.annotationNode)
+        let plane = SCNPlane(width: 1,
+                             height: 1)
+        let planeNode = SCNNode(geometry: plane)
+        let newMaterial = SCNMaterial()
+        newMaterial.isDoubleSided = true
+        newMaterial.diffuse.contents = UIImage(named: "dialog")!
+        planeNode.opacity = 1
+        planeNode.eulerAngles.x = -.pi / 2
+        planeNode.geometry?.materials.append(newMaterial)
+        rootNode.addChildNode(planeNode)
     }
     func getLocationNode(node: SCNNode?) -> SCNNode? {
         guard let node = node else {return nil}
@@ -159,26 +157,26 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             }
         }
     }
-    private func addMockLocation() {
-        let altitude = CLLocationDistance(exactly: currentAltitude)
-        var mockLocationNodeTemp:[LocationSceneNode] = [LocationSceneNode]()
-        var mockNodeTemp:[SCNNode] = [SCNNode]()
-        var i = 0
-        for item in mockLocation.locations {
-            i += 1
-            let location = CLLocation(coordinate: CLLocationCoordinate2D(latitude: item.latitude ?? 0, longitude: item.longitude ?? 0), altitude: altitude ?? 10)
-            let mosquitoNode = SCNScene(named: "art.scnassets/Mosquito_Color.scn")!.rootNode.clone()
-            mosquitoNode.accessibilityHint = "\(i)"
-            mockNodeTemp.append(mosquitoNode)
-            let mosquitoLocationNode = LocationSceneNode(location: location, node: mosquitoNode)
-            mosquitoLocationNode.tag = "\(i)"
-            mockLocationNodeTemp.append(mosquitoLocationNode)
-            sceneLocationView.addLocationNodeWithConfirmedLocation(locationNode: mosquitoLocationNode)
-            sceneView.scene.rootNode.addChildNode(mosquitoNode)
-        }
-        mockLocationNode = mockLocationNodeTemp
-        mockNode = mockNodeTemp
-    }
+//    private func addMockLocation() {
+//        let altitude = CLLocationDistance(exactly: currentAltitude)
+//        var mockLocationNodeTemp:[LocationSceneNode] = [LocationSceneNode]()
+//        var mockNodeTemp:[SCNNode] = [SCNNode]()
+//        var i = 0
+//        for item in mockLocation.locations {
+//            i += 1
+//            let location = CLLocation(coordinate: CLLocationCoordinate2D(latitude: item.latitude ?? 0, longitude: item.longitude ?? 0), altitude: altitude ?? 10)
+//            let mosquitoNode = SCNScene(named: "art.scnassets/Mosquito_Color.scn")!.rootNode.clone()
+//            mosquitoNode.accessibilityHint = "\(i)"
+//            mockNodeTemp.append(mosquitoNode)
+//            let mosquitoLocationNode = LocationSceneNode(location: location, node: mosquitoNode)
+//            mosquitoLocationNode.tag = "\(i)"
+//            mockLocationNodeTemp.append(mosquitoLocationNode)
+//            sceneLocationView.addLocationNodeWithConfirmedLocation(locationNode: mosquitoLocationNode)
+//            sceneView.scene.rootNode.addChildNode(mosquitoNode)
+//        }
+//        mockLocationNode = mockLocationNodeTemp
+//        mockNode = mockNodeTemp
+//    }
     private func transform(_ lati:CLLocationDegrees?, _ long:CLLocationDegrees?) -> CLLocationCoordinate2D {
         guard let lati = lati, let long = long else {
             return CLLocationCoordinate2D(latitude: 0, longitude: 0)
@@ -190,7 +188,6 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         var nodeTemp:[SCNNode] = [SCNNode]()
         var i = 0
         for item in locations {
-
             i += 1
             let mosquitoNode = SCNScene(named: "art.scnassets/Mosquito_Color.scn")!.rootNode.clone()
             mosquitoNode.accessibilityHint = "\(i)"
@@ -230,8 +227,10 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     private func getAllShowReport(_ report:[MBReport]?) {
         guard let report = report else {return}
         var reports:[ShowReport] = [ShowReport]()
+        let group = DispatchGroup()
         for item in report {
             guard let latitude = item.latitude, let longitude = item.longitude else {return}
+            group.enter()
             let coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
             let location = CLLocation(coordinate: coordinate, altitude: currentAltitude)
                 let imgUrl = URL(string: item.url ?? "")
@@ -239,7 +238,11 @@ class ViewController: UIViewController, ARSCNViewDelegate {
                     let showItem = ShowReport(img: img, location: location, comment: item.description, type: item.type)
                     reports.append(showItem)
                     self?.myShowReport = reports
+                    group.leave()
                 }
+        }
+        group.notify(queue: .main) { [weak self] in
+            self?.renderLocationNode(reports)
         }
     }
     private func showReportPage() {
@@ -297,8 +300,6 @@ extension ViewController:SceneLocationViewDelegate {
     func sceneLocationViewDidAddSceneLocationEstimate(sceneLocationView: SceneLocationView, position: SCNVector3, location: CLLocation) {
         currentLocation = location.coordinate
         currentAltitude = location.altitude
-        print(currentLocation)
-
     }
     
     func sceneLocationViewDidRemoveSceneLocationEstimate(sceneLocationView: SceneLocationView, position: SCNVector3, location: CLLocation) {

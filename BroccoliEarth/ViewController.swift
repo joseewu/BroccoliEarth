@@ -77,7 +77,6 @@ class ViewController: UIViewController, ARSCNViewDelegate {
                 print(error?.localizedDescription ?? "an error occur")
             }
         }
-//        let scene:SCNScene = SCNScene(named: "art.scnassets/Mosquito_Color.scn")!
         let scene:SCNScene = SCNScene()
         sceneView.scene = scene
         sceneLocationView.run()
@@ -103,21 +102,14 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         guard let rootNode = rootNode else {
             return
         }
-//        let location = CLLocation(coordinate: location.coordinate, altitude: location.altitude)
-//        let image = UIImage(named: "dialog")!
-//        let annotationNode = LocationAnnotationNode(location: location, image: image)
-//        annotationNode.annotationNode.scale = SCNVector3(0.05, 0.05, 0.05)
-//        annotationNode.annotationNode.localTranslate(by: SCNVector3(0, 0, -0.5))
-//        rootNode.addChildNode(annotationNode.annotationNode)
-        let plane = SCNPlane(width: 1,
-                             height: 1)
+        let plane = SCNPlane(width: 0.4,
+                             height: 0.4)
+        plane.firstMaterial?.diffuse.contents = UIImage(named: "dialog")!
+        //標tag
+        
         let planeNode = SCNNode(geometry: plane)
-        let newMaterial = SCNMaterial()
-        newMaterial.isDoubleSided = true
-        newMaterial.diffuse.contents = UIImage(named: "dialog")!
+        planeNode.localTranslate(by: SCNVector3(0, 0, -0.5))
         planeNode.opacity = 1
-        planeNode.eulerAngles.x = -.pi / 2
-        planeNode.geometry?.materials.append(newMaterial)
         rootNode.addChildNode(planeNode)
     }
     func getLocationNode(node: SCNNode?) -> SCNNode? {
@@ -131,7 +123,6 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             if let sameNode =  jjj.first {
                 print(sameNode.location)
                 addLocationNote(at: sameNode.location, with: nodeStack.first)
-                print(currentLocation)
             }
             return node
         } else {

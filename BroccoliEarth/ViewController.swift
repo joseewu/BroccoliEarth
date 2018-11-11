@@ -157,26 +157,6 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             }
         }
     }
-//    private func addMockLocation() {
-//        let altitude = CLLocationDistance(exactly: currentAltitude)
-//        var mockLocationNodeTemp:[LocationSceneNode] = [LocationSceneNode]()
-//        var mockNodeTemp:[SCNNode] = [SCNNode]()
-//        var i = 0
-//        for item in mockLocation.locations {
-//            i += 1
-//            let location = CLLocation(coordinate: CLLocationCoordinate2D(latitude: item.latitude ?? 0, longitude: item.longitude ?? 0), altitude: altitude ?? 10)
-//            let mosquitoNode = SCNScene(named: "art.scnassets/Mosquito_Color.scn")!.rootNode.clone()
-//            mosquitoNode.accessibilityHint = "\(i)"
-//            mockNodeTemp.append(mosquitoNode)
-//            let mosquitoLocationNode = LocationSceneNode(location: location, node: mosquitoNode)
-//            mosquitoLocationNode.tag = "\(i)"
-//            mockLocationNodeTemp.append(mosquitoLocationNode)
-//            sceneLocationView.addLocationNodeWithConfirmedLocation(locationNode: mosquitoLocationNode)
-//            sceneView.scene.rootNode.addChildNode(mosquitoNode)
-//        }
-//        mockLocationNode = mockLocationNodeTemp
-//        mockNode = mockNodeTemp
-//    }
     private func transform(_ lati:CLLocationDegrees?, _ long:CLLocationDegrees?) -> CLLocationCoordinate2D {
         guard let lati = lati, let long = long else {
             return CLLocationCoordinate2D(latitude: 0, longitude: 0)
